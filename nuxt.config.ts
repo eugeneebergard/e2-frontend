@@ -10,7 +10,8 @@ export default defineNuxtConfig({
         { name: 'format-detection', content: 'telephone=no' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-    }
+    },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
 
   devtools: { enabled: true },
@@ -32,13 +33,22 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.BASE_URL || 'http://localhost:3000/'
+      apiBase: process.env.BASE_URL || 'http://localhost:3000/',
+      newsApiBase: process.env.NEWS_API_BASE,
+      newsApiKey: process.env.NEWS_API_KEY
     }
   },
 
   typescript: {
     strict: true
   },
+
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
 
   pages: true,
 })

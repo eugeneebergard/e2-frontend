@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { TArticleData, TNewsApiOptions } from '@/types';
+import { TArticleData, TNewsApiOptions } from '@/types'
 
 const keyWord = ref(useSearch().value.keyWord)
 
 async function getSavedArticles() {
   const options: TNewsApiOptions = {
     keyWord: keyWord.value,
-    fromDate: true,
+    fromDate: true
   }
 
-  const { data, error } = await useFetch<{ articles: TArticleData[] }>(newsUrl(options))
+  const { data, error } = await useFetch<{ articles: TArticleData[] }>(
+    newsUrl(options)
+  )
 
   if (data.value) {
     useSearch().value.articles = data.value.articles
-    console.log(data.value.articles)
   }
 
   if (error.value) {
@@ -39,9 +40,11 @@ async function submit() {
 
 <template>
   <form class="search-form">
-    <input class="search-form__field" placeholder="Введите тему новости" v-model="keyWord">
-    <button class="search-form__submit" @click.prevent="submit">
-      Искать
-    </button>
+    <input
+      v-model="keyWord"
+      class="search-form__field"
+      placeholder="Введите тему новости"
+    />
+    <button class="search-form__submit" @click.prevent="submit">Искать</button>
   </form>
 </template>

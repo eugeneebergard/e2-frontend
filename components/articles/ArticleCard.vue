@@ -1,10 +1,10 @@
 <script setup lang="ts">
 defineProps<{
-  date: string,
-  title: string,
-  text: string,
-  source: string,
-  link: string,
+  date: string
+  title: string
+  text: string
+  source: string
+  link: string
   image: string | null
 }>()
 </script>
@@ -13,7 +13,7 @@ defineProps<{
   <li class="card-article">
     <a :href="link" class="card-article__link">
       <div>
-        <img class="card-article__image" :src="image" alt="image">
+        <img class="card-article__image" :src="image" alt="image" />
         <span>{{ correctDate(date) }}</span>
         <h4>{{ title }}</h4>
         <p v-if="text">{{ text }}</p>

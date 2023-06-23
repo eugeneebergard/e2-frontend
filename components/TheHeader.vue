@@ -1,30 +1,28 @@
 <script setup lang="ts">
-import { TUseUserValue } from '@/types';
+import { TUseUserValue } from '@/types'
 
 const user: TUseUserValue = useUser().value
 async function signin() {
-  const { data, error } = await useApi('/signin', {
+  const { data } = await useApi('/signin', {
     method: 'POST',
     body: {
       email: '*',
       password: '*'
     }
-  });
+  })
 
   if (data.value) {
     window.location.reload()
-    console.log(data.value)
   }
 }
 
 async function logout() {
-  const { data, error } = await useApi<{ message: string }>('/logout', {
-    method: 'POST',
-  });
+  const { data } = await useApi<{ message: string }>('/logout', {
+    method: 'POST'
+  })
 
   if (data.value) {
     window.location.reload()
-    console.log(data.value.message)
   }
 }
 </script>

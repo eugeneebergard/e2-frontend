@@ -3,14 +3,16 @@ import { TSavedArticleData, TUseSavedArticlesValue } from '@/types'
 
 const savedArticlesData: TUseSavedArticlesValue = useSavedArticles().value
 
-const { data: savedArticles } = await useApi<{ data: TSavedArticleData[] }>('/articles')
+const { data: savedArticles } = await useApi<{ data: TSavedArticleData[] }>(
+  '/articles'
+)
 
 if (savedArticles.value) {
   useSavedArticles().value.articles = savedArticles.value.data
 }
 
 useHead({
-  title: 'E2 Search',
+  title: 'E2 Search'
 })
 </script>
 
@@ -20,5 +22,3 @@ useHead({
     <ArticleSavedList :articles="savedArticlesData.articles" />
   </main>
 </template>
-
-

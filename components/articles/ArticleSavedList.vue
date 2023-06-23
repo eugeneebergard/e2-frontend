@@ -10,6 +10,7 @@ defineProps<{
   <ul class="grid-articles">
     <ArticleCard
       v-for="article in articles"
+      :key="article.link"
       :date="article.date"
       :link="article.link"
       :source="article.source"

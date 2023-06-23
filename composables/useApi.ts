@@ -1,4 +1,3 @@
-
 export const useApi: typeof useFetch = (request, opts?) => {
   const config = useRuntimeConfig()
 

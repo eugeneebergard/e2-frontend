@@ -5,13 +5,15 @@ const searchData: TUseSearchValue = useSearch().value
 const headlinesData: TUseHeadlinesValue = useHeadlines().value
 
 if (!useHeadlines().value.headlines.length) {
-  const { data } = await useFetch<{ articles: THeadlineData[] }>(newsUrl({ pageSize: 10 }))
+  const { data } = await useFetch<{ articles: THeadlineData[] }>(
+    newsUrl({ pageSize: 10 })
+  )
 
   data.value && (useHeadlines().value.headlines = data.value.articles)
 }
 
 useHead({
-  title: 'E2 Search',
+  title: 'E2 Search'
 })
 </script>
 
@@ -29,10 +31,7 @@ useHead({
         v-show="!searchData.keyWord"
         :headlines-data="headlinesData"
       />
-      <SearchResults
-        v-if="searchData.keyWord"
-        :search-data="searchData"
-      />
+      <SearchResults v-if="searchData.keyWord" :search-data="searchData" />
     </section>
   </main>
 </template>

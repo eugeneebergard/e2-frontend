@@ -8,10 +8,8 @@ defineProps<{
 
 <template>
   <ul class="headline-list">
-    <li v-for="headline in headlines">
+    <li v-for="headline in headlines" :key="headline.url">
       <a :href="headline.url">{{ headline.title }}</a>
     </li>
   </ul>
 </template>
-
-

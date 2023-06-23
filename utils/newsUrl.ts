@@ -1,4 +1,4 @@
-import { TNewsApiOptions } from '@/types';
+import { TNewsApiOptions } from '@/types'
 
 /**
  * Если переданы опции и в них присутствует запрос, то генерируется url для поиска статьей по этому запросу,
@@ -16,13 +16,16 @@ export const newsUrl = (options?: TNewsApiOptions) => {
   let url: string
 
   if (options && options.keyWord) {
-    url = 'everything?'
-      + `q=${options.keyWord}&`
-      + `${options.fromDate && `from=${actualDate()}`}&`
-      + `sortBy=${options.sortBy ? options.sortBy : 'publishedAt'}&`
-      + `pageSize=${options.pageSize ? options.pageSize : 100}`
+    url =
+      'everything?' +
+      `q=${options.keyWord}&` +
+      `${options.fromDate && `from=${actualDate()}`}&` +
+      `sortBy=${options.sortBy ? options.sortBy : 'publishedAt'}&` +
+      `pageSize=${options.pageSize ? options.pageSize : 100}`
   } else {
-    url = `top-headlines?country=ru&pageSize=${options && options.pageSize ? options.pageSize : 10}`
+    url = `top-headlines?country=ru&pageSize=${
+      options && options.pageSize ? options.pageSize : 10
+    }`
   }
 
   return `${apiBase}${url}&apiKey=${apiKey}`

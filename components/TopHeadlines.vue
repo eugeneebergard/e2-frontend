@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TUseHeadlinesValue } from '@/types';
+import { TUseHeadlinesValue } from '@/types'
 
 defineProps<{
   headlinesData: TUseHeadlinesValue

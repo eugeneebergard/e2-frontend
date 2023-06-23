@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TUseSearchValue } from '@/types';
+import { TUseSearchValue } from '@/types'
 
 const props = defineProps<{
   searchData: TUseSearchValue
@@ -7,7 +7,9 @@ const props = defineProps<{
 
 const showLoader = computed(() => props.searchData.loading)
 const showError = computed(() => !showLoader && props.searchData.error)
-const showNotFound = computed(() => !showError && !props.searchData.articles.length)
+const showNotFound = computed(
+  () => !showError && !props.searchData.articles.length
+)
 </script>
 
 <template>
@@ -24,7 +26,7 @@ const showNotFound = computed(() => !showError && !props.searchData.articles.len
 
     <div v-else>
       <h2 class="articles-grid__heading">Результат поиска</h2>
-      <ArticleList :articles="searchData.articles"/>
+      <ArticleList :articles="searchData.articles" />
     </div>
   </div>
 </template>

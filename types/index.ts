@@ -1,6 +1,6 @@
 export type TNewsApiOptions = {
-  keyWord?: string,
-  fromDate?: boolean,
+  keyWord?: string
+  fromDate?: boolean
   sortBy?: 'publishedAt' | 'popularity'
   pageSize?: number
 }
@@ -10,11 +10,12 @@ export {
   TArticleData,
   THeadlineData,
   TProfileData,
-  TAuthInfoData,
+  TAuthInfoData
 } from './data'
 
 export {
   TUseUserValue,
   TUseSearchValue,
   TUseHeadlinesValue,
-  TUseSavedArticlesValue } from './states'
+  TUseSavedArticlesValue
+} from './states'

@@ -1,43 +1,43 @@
 export type TSavedArticleData = {
-  keyword: string,
-  title: string,
-  text: string,
-  date: string,
-  source: string,
-  link: string,
+  keyword: string
+  title: string
+  text: string
+  date: string
+  source: string
+  link: string
   image: string
 }
 
 export type TArticleData = {
-  author: string,
+  author: string
   content: string
-  description: string,
-  publishedAt: string,
+  description: string
+  publishedAt: string
   source: {
-    id: string | null,
+    id: string | null
     name: string
-  },
-  title: string,
-  url: string,
+  }
+  title: string
+  url: string
   urlToImage: string | null
 }
 
 export type THeadlineData = {
-  author: string,
+  author: string
   content: null
-  description: null,
-  publishedAt: string,
+  description: null
+  publishedAt: string
   source: {
-    id: string,
+    id: string
     name: string
-  },
-  title: string,
-  url: string,
+  }
+  title: string
+  url: string
   urlToImage: null
 }
 
 export type TProfileData = {
-  email: string,
+  email: string
   name: string
 }
 

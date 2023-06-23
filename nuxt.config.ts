@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'format-detection', content: 'telephone=no' }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
@@ -16,19 +16,16 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  css: [
-    '@/assets/sass/global.sass',
-    '@/assets/css/normalize.css',
-  ],
+  css: ['@/assets/sass/global.sass', '@/assets/css/normalize.css'],
 
   vite: {
     css: {
       preprocessorOptions: {
         sass: {
-          additionalData: '@import "@/assets/sass/_variables.sass"',
-        },
-      },
-    },
+          additionalData: '@import "@/assets/sass/_variables.sass"'
+        }
+      }
+    }
   },
 
   runtimeConfig: {
@@ -46,9 +43,9 @@ export default defineNuxtConfig({
   components: [
     {
       path: '~/components',
-      pathPrefix: false,
-    },
+      pathPrefix: false
+    }
   ],
 
-  pages: true,
+  pages: true
 })

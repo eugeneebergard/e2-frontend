@@ -1,4 +1,9 @@
-import { TUseUserValue, TUseSearchValue, TUseHeadlinesValue, TUseSavedArticlesValue } from '@/types';
+import {
+  TUseUserValue,
+  TUseSearchValue,
+  TUseHeadlinesValue,
+  TUseSavedArticlesValue
+} from '@/types'
 export const useSearch = () => {
   return useState<TUseSearchValue>('searchData', () => {
     return {
@@ -34,4 +39,3 @@ export const useUser = () => {
     }
   })
 }
-

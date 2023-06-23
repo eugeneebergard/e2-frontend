@@ -1,17 +1,21 @@
-import { TArticleData, THeadlineData, TProfileData, TSavedArticleData } from './';
+import {
+  TArticleData,
+  THeadlineData,
+  TProfileData,
+  TSavedArticleData
+} from './'
 
 export type TUseUserValue = {
-  profile: TProfileData | null,
+  profile: TProfileData | null
   isAuth: boolean
 }
 
 export type TUseSearchValue = {
-  keyWord: string,
-  loading: boolean,
-  error: any,
+  keyWord: string
+  loading: boolean
+  error: any
   articles: TArticleData[]
 }
-
 
 export type TUseSavedArticlesValue = {
   articles: TSavedArticleData[]

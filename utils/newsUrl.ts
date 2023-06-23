@@ -10,8 +10,8 @@ export const newsUrlAll = (options: TNewsApiOptions) => {
     'everything?' +
     `q=${options.keyWord}&` +
     `${options.fromDate && `from=${actualDate()}`}&` +
-    `sortBy=${options.sortBy ? options.sortBy : 'publishedAt'}&` +
-    `pageSize=${options.pageSize ? options.pageSize : 50}`
+    `sortBy=${options.sortBy || 'publishedAt'}&` +
+    `pageSize=${options.pageSize || 50}`
 
   return `${apiBase}${url}&apiKey=${apiKey}`
 }
@@ -22,5 +22,7 @@ export const newsUrlTop = (pageSize?: number) => {
   const apiBase = configPublic.newsApiBase
   const apiKey = configPublic.newsApiKey
 
-  return `${apiBase}top-headlines?country=ru&pageSize=${pageSize ? pageSize : 10}&apiKey=${apiKey}`
+  return `${apiBase}top-headlines?country=ru&pageSize=${
+    pageSize || 10
+  }&apiKey=${apiKey}`
 }

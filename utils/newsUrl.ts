@@ -1,6 +1,11 @@
-import { TNewsApiOptions } from '@/types'
+type TNewsUrlOptions = {
+  keyWord: string
+  fromDate?: boolean
+  sortBy?: 'publishedAt' | 'popularity'
+  pageSize?: number
+}
 
-export const newsUrlAll = (options: TNewsApiOptions) => {
+export const newsUrlAll = (options: TNewsUrlOptions) => {
   const configPublic = useRuntimeConfig().public
 
   const apiBase = configPublic.newsApiBase

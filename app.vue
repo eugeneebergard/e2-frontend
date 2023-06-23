@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { TAuthInfoData, TProfileData } from '@/types'
+import { useUserStore } from '@/store/user'
 
-const { data: authInfoData } = await useApi<TAuthInfoData>('/check-user')
+const { getIsAuthData, getIsAuth, getProfileData } = useUserStore()
 
-authInfoData.value && (useUser().value.isAuth = authInfoData.value.userIsAuth)
+const isAuth: Ref<boolean> = getIsAuth
 
-if (useUser().value.isAuth) {
-  const { data: profileData } = await useApi<TProfileData>('/users/me')
-
-  profileData.value && (useUser().value.profile = profileData.value)
-}
+await getIsAuthData()
+isAuth.value && (await getProfileData())
 </script>
 
 <template>

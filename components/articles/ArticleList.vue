@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { TArticleData } from '@/types'
+import { TArticle } from '@/types/articles'
 
 defineProps<{
-  articles: TArticleData[]
+  articles: TArticle[]
 }>()
 </script>
 

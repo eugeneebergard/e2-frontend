@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { THeadline } from '@/store/headlines'
+import { THeadline } from '@/types/articles'
 
 defineProps<{
   headlines: Ref<THeadline[]>

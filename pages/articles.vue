@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { TSavedArticleData, TUseSavedArticlesValue } from '@/types'
+import { useArticlesStore } from '@/store/articles'
+import { TSavedArticle } from '@/types/articles'
 
-const savedArticlesData: TUseSavedArticlesValue = useSavedArticles().value
+const { getSavedArticlesData, getSavedArticles } = useArticlesStore()
 
-const { data: savedArticles } = await useApi<{ data: TSavedArticleData[] }>(
-  '/articles'
-)
+const savedArticles: Ref<TSavedArticle[]> = getSavedArticles
 
-if (savedArticles.value) {
-  useSavedArticles().value.articles = savedArticles.value.data
-}
+await getSavedArticlesData()
 
 useHead({
   title: 'E2 Search'
@@ -19,6 +16,6 @@ useHead({
 <template>
   <main>
     Articles Page
-    <ArticleSavedList :articles="savedArticlesData.articles" />
+    <ArticleSavedList :articles="savedArticles" />
   </main>
 </template>

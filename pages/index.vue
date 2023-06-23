@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { THeadline, useHeadlinesStore } from '@/store/headlines'
-import { TUseSearchValue } from '@/types'
+import { TSearch, useArticlesStore } from '@/store/articles'
+import { THeadline } from '@/types/articles'
 
-const { getHeadlinesData } = useHeadlinesStore()
-const { getHeadlines } = useHeadlinesStore()
+const { getSearch, getHeadlinesData, getHeadlines } = useArticlesStore()
 
 const headlines: Ref<THeadline[]> = getHeadlines
-const searchData: TUseSearchValue = useSearch().value
+const search: TSearch = getSearch
 
-!getHeadlines.value.length && (await getHeadlinesData())
+!headlines.value.length && (await getHeadlinesData())
 
 useHead({
   title: 'E2 Search'
@@ -25,8 +24,8 @@ useHead({
       <SearchForm />
     </section>
     <section class="articles">
-      <TopHeadlines v-show="!searchData.keyWord" :headlines="headlines" />
-      <SearchResults v-if="searchData.keyWord" :search-data="searchData" />
+      <TopHeadlines v-show="!search.keyWord" :headlines="headlines" />
+      <SearchResults v-if="search.keyWord" :search="search" />
     </section>
   </main>
 </template>

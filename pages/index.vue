@@ -5,9 +5,7 @@ const searchData: TUseSearchValue = useSearch().value
 const headlinesData: TUseHeadlinesValue = useHeadlines().value
 
 if (!useHeadlines().value.headlines.length) {
-  const { data } = await useFetch<{ articles: THeadlineData[] }>(
-    newsUrl({ pageSize: 10 })
-  )
+  const { data } = await useFetch<{ articles: THeadlineData[] }>(newsUrlTop())
 
   data.value && (useHeadlines().value.headlines = data.value.articles)
 }

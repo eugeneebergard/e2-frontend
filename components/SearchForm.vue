@@ -3,14 +3,14 @@ import { TArticleData, TNewsApiOptions } from '@/types'
 
 const keyWord = ref(useSearch().value.keyWord)
 
-async function getSavedArticles() {
+async function getArticles() {
   const options: TNewsApiOptions = {
     keyWord: keyWord.value,
     fromDate: true
   }
 
   const { data, error } = await useFetch<{ articles: TArticleData[] }>(
-    newsUrl(options)
+    newsUrlAll(options)
   )
 
   if (data.value) {
@@ -32,7 +32,7 @@ async function submit() {
   useSearch().value.loading = true
   useSearch().value.keyWord = keyWord.value
 
-  await getSavedArticles()
+  await getArticles()
 
   useSearch().value.loading = false
 }

@@ -1,5 +1,5 @@
 export type TNewsApiOptions = {
-  keyWord?: string
+  keyWord: string
   fromDate?: boolean
   sortBy?: 'publishedAt' | 'popularity'
   pageSize?: number

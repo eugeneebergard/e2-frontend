@@ -1,5 +1,6 @@
 {
   "name": "e2-frontend",
+  "author": "Evgeny Ebergard",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -27,6 +28,11 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "pinia": "^2.1.4",
     "sass": "^1.63.4"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }

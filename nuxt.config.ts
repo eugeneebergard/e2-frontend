@@ -36,6 +36,12 @@ export default defineNuxtConfig({
     }
   },
 
+  modules: ['@pinia/nuxt'],
+
+  pinia: {
+    autoImports: ['defineStore']
+  },
+
   typescript: {
     strict: true
   },

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { TUseHeadlinesValue } from '@/types'
+import { THeadline } from '@/store/headlines'
 
 defineProps<{
-  headlinesData: TUseHeadlinesValue
+  headlines: Ref<THeadline[]>
 }>()
 </script>
 
 <template>
   <div class="headlines">
-    <HeadlineList :headlines="headlinesData.headlines" />
+    <HeadlineList :headlines="headlines" />
   </div>
 </template>

@@ -8,7 +8,6 @@ export type TNewsApiOptions = {
 export {
   TSavedArticleData,
   TArticleData,
-  THeadlineData,
   TProfileData,
   TAuthInfoData
 } from './data'
@@ -16,6 +15,5 @@ export {
 export {
   TUseUserValue,
   TUseSearchValue,
-  TUseHeadlinesValue,
   TUseSavedArticlesValue
 } from './states'

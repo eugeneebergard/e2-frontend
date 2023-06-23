@@ -1,9 +1,4 @@
-import {
-  TArticleData,
-  THeadlineData,
-  TProfileData,
-  TSavedArticleData
-} from './'
+import { TArticleData, TProfileData, TSavedArticleData } from './'
 
 export type TUseUserValue = {
   profile: TProfileData | null
@@ -19,8 +14,4 @@ export type TUseSearchValue = {
 
 export type TUseSavedArticlesValue = {
   articles: TSavedArticleData[]
-}
-
-export type TUseHeadlinesValue = {
-  headlines: THeadlineData[]
 }

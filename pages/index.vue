@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { THeadlineData, TUseHeadlinesValue, TUseSearchValue } from '@/types'
+import { THeadline, useHeadlinesStore } from '@/store/headlines'
+import { TUseSearchValue } from '@/types'
 
+const { getHeadlinesData } = useHeadlinesStore()
+const { getHeadlines } = useHeadlinesStore()
+
+const headlines: Ref<THeadline[]> = getHeadlines
 const searchData: TUseSearchValue = useSearch().value
-const headlinesData: TUseHeadlinesValue = useHeadlines().value
 
-if (!useHeadlines().value.headlines.length) {
-  const { data } = await useFetch<{ articles: THeadlineData[] }>(newsUrlTop())
-
-  data.value && (useHeadlines().value.headlines = data.value.articles)
-}
+!getHeadlines.value.length && (await getHeadlinesData())
 
 useHead({
   title: 'E2 Search'
@@ -25,10 +25,7 @@ useHead({
       <SearchForm />
     </section>
     <section class="articles">
-      <TopHeadlines
-        v-show="!searchData.keyWord"
-        :headlines-data="headlinesData"
-      />
+      <TopHeadlines v-show="!searchData.keyWord" :headlines="headlines" />
       <SearchResults v-if="searchData.keyWord" :search-data="searchData" />
     </section>
   </main>

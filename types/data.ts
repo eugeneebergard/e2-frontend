@@ -22,20 +22,6 @@ export type TArticleData = {
   urlToImage: string | null
 }
 
-export type THeadlineData = {
-  author: string
-  content: null
-  description: null
-  publishedAt: string
-  source: {
-    id: string
-    name: string
-  }
-  title: string
-  url: string
-  urlToImage: null
-}
-
 export type TProfileData = {
   email: string
   name: string

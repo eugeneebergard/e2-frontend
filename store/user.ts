@@ -1,12 +1,25 @@
 import { TProfile, TSignupUser, TSigninUser } from '@/types/user'
 
-export const useUserStore = defineStore('user-store', () => {
+export const useProfileStore = defineStore('profile-store', () => {
   const profile: Ref<TProfile> = ref({ email: '', name: '' })
+
+  async function getProfileData() {
+    const { data } = await useApi<{ user: TProfile }>('/users/me')
+
+    data.value && (profile.value = data.value.user)
+  }
+
+  return { profile, getProfileData }
+})
+
+export const useAuthStore = defineStore('auth-store', () => {
   const isAuth: Ref<boolean> = ref(false)
 
-  const getProfile = computed(() => profile)
-  const getIsAuth = computed(() => isAuth)
+  async function getIsAuthData() {
+    const { data } = await useApi<{ isAuth: boolean }>('/check-user')
 
+    data.value && (isAuth.value = data.value.isAuth)
+  }
   async function signup(payload: TSignupUser) {
     const { data, error } = await useApi('/signup', {
       method: 'POST',
@@ -53,27 +66,5 @@ export const useUserStore = defineStore('user-store', () => {
     }
   }
 
-  async function getProfileData() {
-    const { data } = await useApi<{ user: TProfile }>('/users/me')
-
-    data.value && (profile.value = data.value.user)
-  }
-
-  async function getIsAuthData() {
-    const { data } = await useApi<{ isAuth: boolean }>('/check-user')
-
-    data.value && (isAuth.value = data.value.isAuth)
-  }
-
-  return {
-    profile,
-    isAuth,
-    getProfile,
-    getIsAuth,
-    getProfileData,
-    getIsAuthData,
-    signup,
-    signin,
-    logout
-  }
+  return { isAuth, getIsAuthData, signup, signin, logout }
 })

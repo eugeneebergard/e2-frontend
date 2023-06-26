@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { TSearch } from '@/store/articles'
+import { TArticle } from '@/types/articles'
 
 const props = defineProps<{
-  search: TSearch
+  articles: TArticle[]
+  pending: boolean
+  error: any
 }>()
 
-const showLoader = computed(() => props.search.pending)
-const showError = computed(() => !showLoader && props.search.error)
-const showNotFound = computed(
-  () => !props.search.error && !props.search.articles.length
-)
+const showLoader = computed(() => props.pending)
+const showError = computed(() => !showLoader && props.error)
+const showNotFound = computed(() => !props.error && !props.articles.length)
 </script>
 
 <template>
@@ -26,7 +26,7 @@ const showNotFound = computed(
 
     <div v-else>
       <h2 class="articles-grid__heading">Результат поиска</h2>
-      <ArticleList :articles="search.articles" />
+      <ArticleList :articles="articles" />
     </div>
   </div>
 </template>

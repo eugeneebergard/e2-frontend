@@ -1,31 +1,10 @@
 import { TArticle, THeadline, TSavedArticle } from '@/types/articles'
 
-export type TSearch = {
-  articles: TArticle[]
-  pending: boolean
-  error: any
-  keyWord: string
-}
-
-export const useArticlesStore = defineStore('articles-store', () => {
+/**
+ * Сохраненные статьи пользователя
+ */
+export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
   const savedArticles: Ref<TSavedArticle[]> = ref([])
-  const headlines: Ref<THeadline[]> = ref([])
-  const search: TSearch = reactive({
-    articles: [],
-    pending: false,
-    error: null,
-    keyWord: ''
-  })
-
-  const getHeadlines = computed(() => headlines)
-  const getSavedArticles = computed(() => savedArticles)
-  const getSearch = computed(() => search)
-
-  async function getHeadlinesData() {
-    const { data } = await useFetch<{ articles: THeadline[] }>(newsUrlTop())
-
-    data.value && (headlines.value = data.value.articles)
-  }
 
   async function getSavedArticlesData() {
     const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
@@ -33,41 +12,56 @@ export const useArticlesStore = defineStore('articles-store', () => {
     data.value && (savedArticles.value = data.value.articles)
   }
 
-  async function getSearchData(value: string) {
-    search.pending = true
-    search.keyWord = value
+  return { savedArticles, getSavedArticlesData }
+})
 
-    if (!search.keyWord) {
-      search.articles = []
+/**
+ * Популярные заголовки
+ */
+export const useHeadlinesStore = defineStore('headlines-store', () => {
+  const headlines: Ref<THeadline[]> = ref([])
+
+  async function getHeadlinesData() {
+    const { data } = await useFetch<{ articles: THeadline[] }>(newsUrlTop())
+
+    data.value && (headlines.value = data.value.articles)
+  }
+
+  return { headlines, getHeadlinesData }
+})
+
+/**
+ * Поиск новостей
+ */
+export const useSearchStore = defineStore('search-store', () => {
+  const articles: Ref<TArticle[]> = ref([])
+  const pending: Ref<boolean> = ref(false)
+  const error: Ref<any> = ref(null)
+  const keyWord: Ref<string> = ref('')
+
+  async function getSearchData(value: string) {
+    pending.value = true
+    keyWord.value = value
+
+    if (!keyWord.value) {
+      articles.value = []
       return
     }
 
     const options = {
-      keyWord: search.keyWord,
+      keyWord: keyWord.value,
       fromDate: true
     }
 
-    const { data, error } = await useFetch<{ articles: TArticle[] }>(
+    const { data, error: errorData } = await useFetch<{ articles: TArticle[] }>(
       newsUrlAll(options)
     )
 
-    data.value && (search.articles = data.value.articles)
-    error.value && (search.error = error.value)
+    data.value && (articles.value = data.value.articles)
+    errorData.value && (error.value = errorData.value)
 
-    search.pending = false
+    pending.value = false
   }
 
-  return {
-    headlines,
-    getHeadlines,
-    getHeadlinesData,
-
-    savedArticles,
-    getSavedArticles,
-    getSavedArticlesData,
-
-    search,
-    getSearch,
-    getSearchData
-  }
+  return { articles, pending, error, keyWord, getSearchData }
 })

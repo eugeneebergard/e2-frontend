@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { useUserStore } from '@/store/user'
-import { TProfile } from '@/types/user'
+import { storeToRefs } from 'pinia'
+import { useProfileStore, useAuthStore } from '@/store/user'
 
-const { getIsAuth, getProfile, signin, logout } = useUserStore()
+const profileStore = useProfileStore()
+const { profile } = storeToRefs(profileStore)
 
-const isAuth: Ref<boolean> = getIsAuth
-const profile: Ref<TProfile> = getProfile
+const authStore = useAuthStore()
+const { isAuth } = storeToRefs(authStore)
+const { signin, logout } = authStore
 </script>
 
 <template>

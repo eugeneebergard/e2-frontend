@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { useUserStore } from '@/store/user'
+import { storeToRefs } from 'pinia'
+import { useProfileStore, useAuthStore } from '@/store/user'
 
-const { getIsAuthData, getIsAuth, getProfileData } = useUserStore()
+const authStore = useAuthStore()
+const { getIsAuthData } = authStore
+const { isAuth } = storeToRefs(authStore)
 
-const isAuth: Ref<boolean> = getIsAuth
+const { getProfileData } = useProfileStore()
 
 await getIsAuthData()
 isAuth.value && (await getProfileData())

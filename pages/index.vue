@@ -1,31 +1,41 @@
 <script setup lang="ts">
-import { TSearch, useArticlesStore } from '@/store/articles'
-import { THeadline } from '@/types/articles'
+import { storeToRefs } from 'pinia'
+import { useSearchStore, useHeadlinesStore } from '@/store/articles'
 
-const { getSearch, getHeadlinesData, getHeadlines } = useArticlesStore()
+const headlinesStore = useHeadlinesStore()
+const { getHeadlinesData } = headlinesStore
+const { headlines } = storeToRefs(headlinesStore)
 
-const headlines: Ref<THeadline[]> = getHeadlines
-const search: TSearch = getSearch
+const {
+  articles: searchArticles,
+  error: searchError,
+  pending: searchPending,
+  keyWord: searchKeyWord
+} = storeToRefs(useSearchStore())
 
 !headlines.value.length && (await getHeadlinesData())
 
-useHead({
-  title: 'E2 Search'
-})
+const headingTitle = 'Что творится в мире?'
+const headingText =
+  'Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.'
+
+useHead({ title: 'E2 Search' })
 </script>
 
 <template>
   <main>
     <section class="search">
-      <TheHeading
-        :title="'Что творится в мире?'"
-        :text="'Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.'"
-      />
+      <TheHeading :title="headingTitle" :text="headingText" />
       <SearchForm />
     </section>
     <section class="articles">
-      <TopHeadlines v-show="!search.keyWord" :headlines="headlines" />
-      <SearchResults v-if="search.keyWord" :search="search" />
+      <TopHeadlines v-show="!searchKeyWord" :headlines="headlines" />
+      <SearchResults
+        v-if="searchKeyWord"
+        :articles="searchArticles"
+        :pending="searchPending"
+        :error="searchError"
+      />
     </section>
   </main>
 </template>

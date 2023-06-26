@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useArticlesStore } from '@/store/articles'
+import { ref } from 'vue'
+import { useSearchStore } from '@/store/articles'
 
-const { getSearch, getSearchData } = useArticlesStore()
+const { keyWord, getSearchData } = useSearchStore()
 
-const inputVal: Ref<string> = ref(getSearch.keyWord)
+const inputVal = ref(keyWord)
 </script>
 
 <template>

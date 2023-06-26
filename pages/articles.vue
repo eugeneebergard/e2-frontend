@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { useArticlesStore } from '@/store/articles'
-import { TSavedArticle } from '@/types/articles'
+import { storeToRefs } from 'pinia'
+import { useSavedArticlesStore } from '@/store/articles'
 
-const { getSavedArticlesData, getSavedArticles } = useArticlesStore()
-
-const savedArticles: Ref<TSavedArticle[]> = getSavedArticles
+const store = useSavedArticlesStore()
+const { getSavedArticlesData } = store
+const { savedArticles } = storeToRefs(store)
 
 await getSavedArticlesData()
 
-useHead({
-  title: 'E2 Search'
-})
+useHead({ title: 'E2 Search' })
 </script>
 
 <template>

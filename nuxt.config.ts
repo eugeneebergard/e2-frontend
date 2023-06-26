@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // @ts-ignore
   app: {
     head: {
       title: 'E2 Search',

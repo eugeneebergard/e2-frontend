@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref } from 'vue'
+import { Ref, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { TProfile } from '@/types/user'
 import { useProfileStore } from '@/store/user'

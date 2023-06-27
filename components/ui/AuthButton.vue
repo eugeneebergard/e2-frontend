@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const showPopupSignin = ref<boolean>(false)
 const showPopupSignup = ref<boolean>(false)
 

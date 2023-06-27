@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/store/user'
+import { useLogoutStore } from '@/store/user'
 const emit = defineEmits(['closePopup'])
 
-const { logout } = useAuthStore()
+const { logout } = useLogoutStore()
 </script>
 
 <template>

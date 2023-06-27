@@ -20,38 +20,75 @@ export const useAuthStore = defineStore('auth-store', () => {
 
     data.value && (isAuth.value = data.value.isAuth)
   }
+
+  return { isAuth, getIsAuthData }
+})
+
+export const useSignupStore = defineStore('signup-store', () => {
+  const response = ref<any>(null)
+  const pending = ref(false)
+  const error = ref<any>(null)
+
+  const showSuccessSignupMsg = computed(() => !!response.value)
+
   async function signup(payload: TSignupUser) {
-    const { data, error } = await useApi('/signup', {
+    pending.value = true
+
+    const { data, error: errorData } = await useApi('/signup', {
       method: 'POST',
       body: payload
     })
 
     if (data.value) {
-      console.log(data.value)
+      response.value = data.value
     }
 
-    if (error.value) {
-      console.log(error.value)
+    if (errorData.value) {
+      error.value = errorData.value
     }
+
+    pending.value = false
   }
 
+  function $reset() {
+    response.value = null
+    pending.value = false
+    error.value = null
+  }
+
+  return { response, pending, error, showSuccessSignupMsg, signup, $reset }
+})
+
+export const useSigninStore = defineStore('signin-store', () => {
+  const pending = ref(false)
+  const error = ref<any>(null)
   async function signin(payload: TSigninUser) {
-    const { data, error } = await useApi('/signin', {
+    pending.value = true
+
+    const { data, error: errorData } = await useApi('/signin', {
       method: 'POST',
       body: payload
     })
 
     if (data.value) {
       window.location.reload()
-      console.log(data.value)
     }
 
-    if (error.value) {
-      console.log(error.value)
+    if (errorData.value) {
+      error.value = errorData.value
     }
+
+    pending.value = false
   }
 
+  return { pending, error, signin }
+})
+
+export const useLogoutStore = defineStore('logout-store', () => {
+  const pending = ref(false)
   async function logout() {
+    pending.value = true
+
     const { data, error } = await useApi('/logout', {
       method: 'POST'
     })
@@ -64,7 +101,9 @@ export const useAuthStore = defineStore('auth-store', () => {
     if (error.value) {
       console.log(error.value)
     }
+
+    pending.value = false
   }
 
-  return { isAuth, getIsAuthData, signup, signin, logout }
+  return { pending, logout }
 })

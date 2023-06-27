@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { Ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { TArticle } from '@/types/articles'
+import { useSearchStore } from '@/store/articles'
 
-const props = defineProps<{
+defineProps<{
   articles: TArticle[]
-  pending: boolean
-  error: any
 }>()
 
-const showLoader = computed(() => props.pending)
-const showError = computed(() => !showLoader && props.error)
-const showNotFound = computed(() => !props.error && !props.articles.length)
+type TSearchRefs = {
+  showLoader: Ref<boolean>
+  showError: Ref<boolean>
+  showNotFound: Ref<boolean>
+}
+
+const { showLoader, showError, showNotFound }: TSearchRefs = storeToRefs(
+  useSearchStore()
+)
 </script>
 
 <template>

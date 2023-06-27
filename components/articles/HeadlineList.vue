@@ -2,7 +2,7 @@
 import { THeadline } from '@/types/articles'
 
 defineProps<{
-  headlines: Ref<THeadline[]>
+  headlines: THeadline[]
 }>()
 </script>
 

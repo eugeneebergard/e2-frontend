@@ -4,7 +4,7 @@ import { useSearchStore } from '@/store/articles'
 
 const { keyWord, getSearchData } = useSearchStore()
 
-const inputVal = ref(keyWord)
+const inputVal = ref<string>(keyWord)
 </script>
 
 <template>

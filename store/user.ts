@@ -1,7 +1,7 @@
 import { TProfile, TSignupUser, TSigninUser } from '@/types/user'
 
 export const useProfileStore = defineStore('profile-store', () => {
-  const profile: Ref<TProfile> = ref({ email: '', name: '' })
+  const profile = ref<TProfile>({ email: '', name: '' })
 
   async function getProfileData() {
     const { data } = await useApi<{ user: TProfile }>('/users/me')
@@ -13,7 +13,7 @@ export const useProfileStore = defineStore('profile-store', () => {
 })
 
 export const useAuthStore = defineStore('auth-store', () => {
-  const isAuth: Ref<boolean> = ref(false)
+  const isAuth = ref(false)
 
   async function getIsAuthData() {
     const { data } = await useApi<{ isAuth: boolean }>('/check-user')

@@ -4,7 +4,7 @@ import { TArticle, THeadline, TSavedArticle } from '@/types/articles'
  * Сохраненные статьи пользователя
  */
 export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
-  const savedArticles: Ref<TSavedArticle[]> = ref([])
+  const savedArticles = ref<TSavedArticle[]>([])
 
   async function getSavedArticlesData() {
     const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
@@ -19,7 +19,7 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
  * Популярные заголовки
  */
 export const useHeadlinesStore = defineStore('headlines-store', () => {
-  const headlines: Ref<THeadline[]> = ref([])
+  const headlines = ref<THeadline[]>([])
 
   async function getHeadlinesData() {
     const { data } = await useFetch<{ articles: THeadline[] }>(newsUrlTop())
@@ -34,10 +34,14 @@ export const useHeadlinesStore = defineStore('headlines-store', () => {
  * Поиск новостей
  */
 export const useSearchStore = defineStore('search-store', () => {
-  const articles: Ref<TArticle[]> = ref([])
-  const pending: Ref<boolean> = ref(false)
-  const error: Ref<any> = ref(null)
-  const keyWord: Ref<string> = ref('')
+  const articles = ref<TArticle[]>([])
+  const pending = ref(false)
+  const error = ref<any>(null)
+  const keyWord = ref('')
+
+  const showLoader = computed(() => pending.value)
+  const showError = computed(() => !showLoader && error.value)
+  const showNotFound = computed(() => !error.value && !articles.value.length)
 
   async function getSearchData(value: string) {
     pending.value = true
@@ -63,5 +67,14 @@ export const useSearchStore = defineStore('search-store', () => {
     pending.value = false
   }
 
-  return { articles, pending, error, keyWord, getSearchData }
+  return {
+    articles,
+    pending,
+    error,
+    keyWord,
+    showLoader,
+    showError,
+    showNotFound,
+    getSearchData
+  }
 })

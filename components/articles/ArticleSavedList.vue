@@ -2,7 +2,7 @@
 import { TSavedArticle } from '@/types/articles'
 
 defineProps<{
-  articles: Ref<TSavedArticle[]>
+  articles: TSavedArticle[]
 }>()
 </script>
 

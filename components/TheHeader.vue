@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import { TProfile } from '@/types/user'
 import { useProfileStore, useAuthStore } from '@/store/user'
 
+type TProfileRefs = { profile: Ref<TProfile> }
+type TAuthRefs = { isAuth: Ref<boolean> }
+
 const profileStore = useProfileStore()
-const { profile } = storeToRefs(profileStore)
+const { profile }: TProfileRefs = storeToRefs(profileStore)
 
 const authStore = useAuthStore()
-const { isAuth } = storeToRefs(authStore)
 const { signin, logout } = authStore
+const { isAuth }: TAuthRefs = storeToRefs(authStore)
 </script>
 
 <template>

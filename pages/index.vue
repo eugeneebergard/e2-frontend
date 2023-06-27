@@ -4,6 +4,12 @@ import { storeToRefs } from 'pinia'
 import { TArticle, THeadline } from '@/types/articles'
 import { useSearchStore, useHeadlinesStore } from '@/store/articles'
 
+useHead({ title: 'E2 Search' })
+
+const headingTitle = 'Что творится в мире?'
+const headingText =
+  'Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.'
+
 type THeadlinesRefs = { headlines: Ref<THeadline[]> }
 type TSearchRefs = {
   articles: Ref<TArticle[]>
@@ -18,12 +24,6 @@ const { articles: searchArticles, keyWord: searchKeyWord }: TSearchRefs =
   storeToRefs(useSearchStore())
 
 !headlines.value.length && (await getHeadlinesData())
-
-const headingTitle = 'Что творится в мире?'
-const headingText =
-  'Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.'
-
-useHead({ title: 'E2 Search' })
 </script>
 
 <template>

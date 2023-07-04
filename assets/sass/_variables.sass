@@ -10,3 +10,16 @@ $main-color: blue
 
 @mixin mainFontFamily
   font-family: Arial, sans-serif
+
+@mixin cutLines($count)
+  display: -webkit-box
+  overflow: hidden
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $count
+
+@mixin cardArticleBtn
+  position: absolute
+  right: 10px
+  top: 10px
+  z-index: 10
+

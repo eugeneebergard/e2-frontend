@@ -12,7 +12,7 @@ export type TArticle = {
   urlToImage: string | null
 }
 
-export type TSavedArticle = {
+export type TSavedCard = {
   keyword: string
   title: string
   text: string
@@ -20,6 +20,11 @@ export type TSavedArticle = {
   source: string
   link: string
   image: string
+}
+
+export type TSavedArticle = TSavedCard & {
+  owner: string
+  _id: string
 }
 
 export type THeadline = {

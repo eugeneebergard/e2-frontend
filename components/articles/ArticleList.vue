@@ -7,8 +7,8 @@ defineProps<{
 </script>
 
 <template>
-  <ul class="grid-articles">
-    <ArticleCard
+  <ul class="article-list">
+    <ArticleListItem
       v-for="article in articles"
       :key="article.url"
       :date="article.publishedAt"

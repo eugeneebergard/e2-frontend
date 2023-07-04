@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <ul class="grid-articles">
-    <ArticleCard
+    <ArticleSavedListItem
       v-for="article in articles"
       :key="article.link"
       :date="article.date"
@@ -17,6 +17,8 @@ defineProps<{
       :text="article.text"
       :title="article.title"
       :image="article.image"
+      :owner="article.owner"
+      :card-id="article._id"
     />
   </ul>
 </template>

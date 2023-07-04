@@ -1,4 +1,9 @@
-import { TArticle, THeadline, TSavedArticle } from '@/types/articles'
+import {
+  TArticle,
+  THeadline,
+  TSavedCard,
+  TSavedArticle
+} from '@/types/articles'
 
 /**
  * Сохраненные статьи пользователя
@@ -6,13 +11,72 @@ import { TArticle, THeadline, TSavedArticle } from '@/types/articles'
 export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
   const savedArticles = ref<TSavedArticle[]>([])
 
+  const newSavedArticle = ref<TSavedArticle | null>(null)
+  const saveError = ref<any>(null)
+  const saveLoading = ref<boolean>(false)
+
+  const deleteResponse = ref<string | null>(null)
+  const deleteError = ref<any>(null)
+  const deleteLoading = ref<boolean>(false)
+
+  const getNewSavedArticleId = computed(() => {
+    return newSavedArticle.value && newSavedArticle.value._id
+  })
+
   async function getSavedArticlesData() {
     const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
 
-    data.value && (savedArticles.value = data.value.articles)
+    data.value && (savedArticles.value = data.value.articles.reverse())
   }
 
-  return { savedArticles, getSavedArticlesData }
+  async function postSavedArticleData(payload: TSavedCard) {
+    saveLoading.value = true
+
+    const { data, error } = await useApi<{ article: TSavedArticle }>(
+      '/articles',
+      {
+        method: 'POST',
+        body: payload
+      }
+    )
+
+    data.value && (newSavedArticle.value = data.value.article)
+    error.value && (saveError.value = error.value)
+
+    saveLoading.value = false
+  }
+
+  async function deleteSavedArticleData(id: string) {
+    deleteLoading.value = true
+
+    const { data, error } = await useApi<{ message: string }>(
+      `/articles/${id}`,
+      { method: 'DELETE' }
+    )
+
+    data.value && (deleteResponse.value = data.value.message)
+    error.value && (deleteError.value = error.value)
+
+    deleteLoading.value = false
+  }
+
+  return {
+    savedArticles,
+
+    newSavedArticle,
+    saveError,
+    saveLoading,
+
+    deleteResponse,
+    deleteError,
+    deleteLoading,
+
+    getNewSavedArticleId,
+
+    getSavedArticlesData,
+    postSavedArticleData,
+    deleteSavedArticleData
+  }
 })
 
 /**

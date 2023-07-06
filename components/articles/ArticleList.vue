@@ -11,12 +11,7 @@ defineProps<{
     <ArticleListItem
       v-for="article in articles"
       :key="article.url"
-      :date="article.publishedAt"
-      :link="article.url"
-      :source="article.source.name"
-      :text="article.description"
-      :title="article.title"
-      :image="article.urlToImage"
+      :article="article"
     />
   </ul>
 </template>

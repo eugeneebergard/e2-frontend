@@ -4,15 +4,14 @@ import { storeToRefs } from 'pinia'
 import { TSavedArticle } from '@/types/articles'
 import { useSavedArticlesStore } from '@/store/articles'
 
+useHead({ title: 'E2 - Сохраненные статьи' })
 definePageMeta({ middleware: ['auth'] })
-useHead({ title: 'E2 Search' })
-
 type TSavedArticlesRefs = { savedArticles: Ref<TSavedArticle[]> }
 
 const store = useSavedArticlesStore()
 const { getSavedArticlesData } = store
-const { savedArticles }: TSavedArticlesRefs = storeToRefs(store)
 
+const { savedArticles }: TSavedArticlesRefs = storeToRefs(store)
 await getSavedArticlesData()
 </script>
 

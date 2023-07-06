@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { TArticle, THeadline } from '@/types/articles'
 import { useSearchStore, useHeadlinesStore } from '@/store/articles'
 
-useHead({ title: 'E2 Search' })
+useHead({ title: 'E2 - Главная' })
 
 const headingTitle = 'Что творится в мире?'
 const headingText =

@@ -11,14 +11,7 @@ defineProps<{
     <ArticleSavedListItem
       v-for="article in articles"
       :key="article.link"
-      :date="article.date"
-      :link="article.link"
-      :source="article.source"
-      :text="article.text"
-      :title="article.title"
-      :image="article.image"
-      :owner="article.owner"
-      :card-id="article._id"
+      :article="article"
     />
   </ul>
 </template>

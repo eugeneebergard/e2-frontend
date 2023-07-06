@@ -2,14 +2,10 @@
 import { Ref, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSavedArticlesStore, useSearchStore } from '@/store/articles'
+import { TArticle } from '@/types/articles'
 
 const props = defineProps<{
-  date: string
-  title: string
-  text: string
-  source: string
-  link: string
-  image: string | null
+  article: TArticle
 }>()
 
 // searchStore
@@ -24,17 +20,17 @@ const { getNewSavedArticleId, deleteResponse } = storeToRefs(savedArticlesStore)
 
 const alternateImageLink =
   'https://deti-i-mama.ru/wp-content/uploads/2020/07/gazeta_212005-132.jpg'
-const imageUrl = props.image || alternateImageLink
+const imageUrl = props.article.urlToImage || alternateImageLink
 const cardId = ref<string | null>(null)
 
 async function saveArticle() {
   const payload = {
     keyword: searchKeyWord.value,
-    date: props.date,
-    title: props.title,
-    text: props.text,
-    source: props.source,
-    link: props.link,
+    date: props.article.publishedAt,
+    title: props.article.title,
+    text: props.article.description,
+    source: props.article.source.name,
+    link: props.article.url,
     image: imageUrl
   }
   await postSavedArticleData(payload)
@@ -49,12 +45,12 @@ async function deleteArticle() {
 
 <template>
   <ArticleCard
-    :title="title"
-    :date="date"
+    :date="article.publishedAt"
+    :link="article.url"
+    :source="article.source.name"
+    :text="article.description"
+    :title="article.title"
     :image="imageUrl"
-    :link="link"
-    :text="text"
-    :source="source"
     :alternate-image-link="alternateImageLink"
   >
     <BookmarkButton

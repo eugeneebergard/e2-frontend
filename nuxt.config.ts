@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   // @ts-ignore
   app: {
     head: {
-      title: 'E2 Search',
+      title: 'E2',
       htmlAttrs: { lang: 'ru' },
       meta: [
         { charset: 'utf-8' },

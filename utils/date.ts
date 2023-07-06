@@ -16,5 +16,5 @@ export const actualDate = () => {
 
 export function correctDate(strDate: string) {
   const date = new Date(strDate)
-  return date.toLocaleDateString()
+  return date.toLocaleDateString('ru-RU')
 }

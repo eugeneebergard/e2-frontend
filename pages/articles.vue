@@ -5,19 +5,18 @@ import { TSavedArticle } from '@/types/articles'
 import { useSavedArticlesStore } from '@/store/articles'
 
 useHead({ title: 'E2 - Сохраненные статьи' })
-definePageMeta({ middleware: ['auth'] })
-type TSavedArticlesRefs = { savedArticles: Ref<TSavedArticle[]> }
+type TSavedArticlesRefs = { actualSavedArticles: Ref<TSavedArticle[]> }
 
 const store = useSavedArticlesStore()
 const { getSavedArticlesData } = store
 
-const { savedArticles }: TSavedArticlesRefs = storeToRefs(store)
+const { actualSavedArticles }: TSavedArticlesRefs = storeToRefs(store)
 await getSavedArticlesData()
 </script>
 
 <template>
   <main>
     Articles Page
-    <ArticleSavedList :articles="savedArticles" />
+    <ArticleSavedList :articles="actualSavedArticles" />
   </main>
 </template>

@@ -23,10 +23,14 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
     return newSavedArticle.value && newSavedArticle.value._id
   })
 
+  const actualSavedArticles = computed(() => {
+    return savedArticles.value.slice().reverse()
+  })
+
   async function getSavedArticlesData() {
     const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
 
-    data.value && (savedArticles.value = data.value.articles.reverse())
+    data.value && (savedArticles.value = data.value.articles)
   }
 
   async function postSavedArticleData(payload: TSavedCard) {
@@ -71,6 +75,7 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
     deleteError,
     deleteLoading,
 
+    actualSavedArticles,
     getNewSavedArticleId,
 
     getSavedArticlesData,

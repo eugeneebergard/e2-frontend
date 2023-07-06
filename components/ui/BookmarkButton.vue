@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { Ref } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAuthStore } from '@/store/user'
-
 defineProps<{
   cardId: string | null
 }>()
-
-const { isAuth }: { isAuth: Ref<boolean> } = storeToRefs(useAuthStore())
-
+const isAuth = useIsAuth()
 const emit = defineEmits(['saveArticle', 'deleteArticle'])
 </script>
 

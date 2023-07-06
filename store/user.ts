@@ -12,18 +12,6 @@ export const useProfileStore = defineStore('profile-store', () => {
   return { profile, getProfileData }
 })
 
-export const useAuthStore = defineStore('auth-store', () => {
-  const isAuth = ref(false)
-
-  async function getIsAuthData() {
-    const { data } = await useApi<{ isAuth: boolean }>('/check-user')
-
-    data.value && (isAuth.value = data.value.isAuth)
-  }
-
-  return { isAuth, getIsAuthData }
-})
-
 export const useSignupStore = defineStore('signup-store', () => {
   const response = ref<any>(null)
   const pending = ref(false)

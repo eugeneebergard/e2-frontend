@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { Ref } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useAuthStore } from '@/store/user'
-type TAuthRefs = { isAuth: Ref<boolean> }
-
-const { isAuth }: TAuthRefs = storeToRefs(useAuthStore())
+const isAuth = useIsAuth()
 </script>
 
 <template>

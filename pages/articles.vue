@@ -5,6 +5,7 @@ import { TSavedArticle } from '@/types/articles'
 import { useSavedArticlesStore } from '@/store/articles'
 
 useHead({ title: 'E2 - Сохраненные статьи' })
+
 type TSavedArticlesRefs = { actualSavedArticles: Ref<TSavedArticle[]> }
 
 const store = useSavedArticlesStore()

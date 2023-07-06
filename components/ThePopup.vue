@@ -15,6 +15,7 @@ const emit = defineEmits(['closePopup'])
 
 <style scoped lang="sass">
 .overlay
+  z-index: 99
   position: fixed
   top: 0
   bottom: 0

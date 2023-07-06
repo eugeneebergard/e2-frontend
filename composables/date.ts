@@ -4,7 +4,7 @@ const editNum = (num: number) => {
   }
   return num
 }
-export const actualDate = () => {
+export const useActualDate = () => {
   const date = new Date()
 
   const year = editNum(date.getFullYear())
@@ -12,4 +12,9 @@ export const actualDate = () => {
   const day = editNum(date.getDate() - 7)
 
   return `${year}-${month}-${day}`
+}
+
+export const useLocaleDate = (strDate: string) => {
+  const date = new Date(strDate)
+  return date.toLocaleDateString('ru-RU')
 }

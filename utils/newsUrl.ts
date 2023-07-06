@@ -11,7 +11,7 @@ export const newsUrlAll = (options: TNewsUrlOptions) => {
   const url =
     'everything?' +
     `q=${options.keyWord}&` +
-    `${options.fromDate && `from=${actualDate()}`}&` +
+    `${options.fromDate && `from=${useActualDate()}`}&` +
     `sortBy=${options.sortBy || 'publishedAt'}&` +
     `pageSize=${options.pageSize || 50}`
 

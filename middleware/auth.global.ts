@@ -3,7 +3,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   data.value && (useIsAuth().value = data.value.isAuth)
 
-  if (to.path !== '/' && !useIsAuth().value) {
+  if (to.path === '/articles' && !useIsAuth().value) {
     return navigateTo('/')
   }
 })

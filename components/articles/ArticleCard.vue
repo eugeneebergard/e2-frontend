@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   date: string
   title: string
   text: string
@@ -8,6 +8,8 @@ defineProps<{
   image: string | null
   alternateImageLink: string
 }>()
+
+const localeDate = useLocaleDate(props.date)
 </script>
 
 <template>
@@ -22,7 +24,7 @@ defineProps<{
           loading="lazy"
           @error="$event.target.src = alternateImageLink"
         />
-        <span class="date">{{ parsedDate(date) }}</span>
+        <span class="date">{{ localeDate }}</span>
         <h4 class="title">{{ title }}</h4>
         <p v-if="text" class="text">{{ text }}</p>
         <span v-if="source" class="source">{{ source }}</span>

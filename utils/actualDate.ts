@@ -13,8 +13,3 @@ export const actualDate = () => {
 
   return `${year}-${month}-${day}`
 }
-
-export function correctDate(strDate: string) {
-  const date = new Date(strDate)
-  return date.toLocaleDateString('ru-RU')
-}

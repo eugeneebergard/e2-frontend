@@ -22,7 +22,7 @@ defineProps<{
           loading="lazy"
           @error="$event.target.src = alternateImageLink"
         />
-        <span class="date">{{ correctDate(date) }}</span>
+        <span class="date">{{ parsedDate(date) }}</span>
         <h4 class="title">{{ title }}</h4>
         <p v-if="text" class="text">{{ text }}</p>
         <span v-if="source" class="source">{{ source }}</span>

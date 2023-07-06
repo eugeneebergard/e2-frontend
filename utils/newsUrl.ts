@@ -6,10 +6,7 @@ type TNewsUrlOptions = {
 }
 
 export const newsUrlAll = (options: TNewsUrlOptions) => {
-  const configPublic = useRuntimeConfig().public
-
-  const apiBase = configPublic.newsApiBase
-  const apiKey = configPublic.newsApiKey
+  const { newsApiBase, newsApiKey } = useRuntimeConfig().public
 
   const url =
     'everything?' +
@@ -18,16 +15,13 @@ export const newsUrlAll = (options: TNewsUrlOptions) => {
     `sortBy=${options.sortBy || 'publishedAt'}&` +
     `pageSize=${options.pageSize || 50}`
 
-  return `${apiBase}${url}&apiKey=${apiKey}`
+  return `${newsApiBase}${url}&apiKey=${newsApiKey}`
 }
 
 export const newsUrlTop = (pageSize?: number) => {
-  const configPublic = useRuntimeConfig().public
+  const { newsApiBase, newsApiKey } = useRuntimeConfig().public
 
-  const apiBase = configPublic.newsApiBase
-  const apiKey = configPublic.newsApiKey
-
-  return `${apiBase}top-headlines?country=ru&pageSize=${
+  return `${newsApiBase}top-headlines?country=ru&pageSize=${
     pageSize || 10
-  }&apiKey=${apiKey}`
+  }&apiKey=${newsApiKey}`
 }

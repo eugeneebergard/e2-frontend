@@ -9,7 +9,9 @@ const isAuth = useIsAuth()
         <nuxt-link to="/" class="nav__link">Главная</nuxt-link>
       </li>
       <li v-if="isAuth" class="nav-list__item">
-        <nuxt-link to="/articles" class="nav__link">Статьи</nuxt-link>
+        <nuxt-link to="/articles" class="nav__link"
+          >Сохранённые статьи</nuxt-link
+        >
       </li>
       <li v-if="!isAuth" class="nav-list__item">
         <AuthButton />
@@ -31,4 +33,7 @@ const isAuth = useIsAuth()
       margin-right: 80px
   &__link
     @include linkDefault
+
+  .router-link-exact-active
+    @include borderUnderline
 </style>

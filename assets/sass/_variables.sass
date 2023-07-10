@@ -8,17 +8,15 @@ $laptop-l: 1440px
 
 $main-color: #5D86EF
 $secondary-color: #252B34
+$hovered-color: #547BDE
 
-@mixin headingFontFamily
-  font-family: Gilroy, Arial, sans-serif
-
-@mixin textFontFamily
-  font-family: Inter, Arial, sans-serif
+$heading-font-family: Gilroy, Arial, sans-serif
+$text-font-family: Inter, Arial, sans-serif
 
 @mixin resetList
+  padding: 0
+  margin: 0
   list-style-type: none
-  padding-left: 0
-  margin-left: 0
 
 @mixin buttonDefault
   border: none
@@ -28,11 +26,18 @@ $secondary-color: #252B34
 @mixin linkDefault
   color: $secondary-color
   text-decoration: none
+  transition: color .3s ease
+  &:hover
+    color: $hovered-color
 
 @mixin inputDefault
   border: none
   border-radius: 30px
   outline: none
+
+@mixin borderUnderline
+  border-bottom: 2px solid $main-color
+  padding-bottom: 7px
 
 @mixin pseudoIcon($url)
   display: block

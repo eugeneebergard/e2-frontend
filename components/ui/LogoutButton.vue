@@ -28,7 +28,10 @@ const showPopupConfirm = ref<boolean>(false)
   align-items: center
   position: relative
   padding: 10px 20px
+  font-weight: 600
   background-color: #fff
+  color: $secondary-color
+  font-family: $text-font-family
   @include buttonDefault
   @include boxShadowDefault
   &:after

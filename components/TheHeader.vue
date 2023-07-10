@@ -3,7 +3,12 @@
     <VContainer>
       <div class="logo-container">
         <nuxt-link to="/" title="На Главную">
-          <img src="@/assets/images/logo.svg" alt="logo" />
+          <img
+            src="@/assets/images/logo.svg"
+            width="95"
+            height="70"
+            alt="logo"
+          />
         </nuxt-link>
       </div>
       <TheNavigation />

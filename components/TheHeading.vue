@@ -11,8 +11,8 @@ defineProps<{
 <style scoped lang="sass">
 .heading
   margin: 0 0 20px
+  font-family: $heading-font-family
   color: $secondary-color
   font-size: 40px
   font-weight: 600
-  @include headingFontFamily
 </style>

@@ -6,10 +6,10 @@ const isAuth = useIsAuth()
   <nav class="nav">
     <ul class="nav-list">
       <li class="nav-list__item">
-        <nuxt-link to="/">Главная</nuxt-link>
+        <nuxt-link to="/" class="nav__link">Главная</nuxt-link>
       </li>
       <li v-if="isAuth" class="nav-list__item">
-        <nuxt-link to="/articles">Статьи</nuxt-link>
+        <nuxt-link to="/articles" class="nav__link">Статьи</nuxt-link>
       </li>
       <li v-if="!isAuth" class="nav-list__item">
         <AuthButton />
@@ -20,3 +20,15 @@ const isAuth = useIsAuth()
     </ul>
   </nav>
 </template>
+
+<style scoped lang="sass">
+.nav
+  &-list
+    display: flex
+    align-items: center
+    @include resetList
+    &__item:not(:last-of-type)
+      margin-right: 80px
+  &__link
+    @include linkDefault
+</style>

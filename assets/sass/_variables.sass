@@ -6,10 +6,32 @@ $laptop: 1024px
 $laptop-m: 1366px
 $laptop-l: 1440px
 
-$main-color: blue
+$main-color: #5D86EF
+$secondary-color: #252B34
 
 @mixin mainFontFamily
   font-family: Arial, sans-serif
+
+@mixin container
+  max-width: 1280px
+
+@mixin resetList
+  list-style-type: none
+  padding-left: 0
+  margin-left: 0
+
+@mixin buttonDefault
+  border: none
+  border-radius: 30px
+  background: transparent
+  cursor: pointer
+
+@mixin linkDefault
+  color: $secondary-color
+  text-decoration: none
+
+@mixin boxShadowDefault
+  box-shadow: 0 5px 10px 0 rgba(146, 146, 146, 0.25)
 
 @mixin cutLines($count)
   display: -webkit-box

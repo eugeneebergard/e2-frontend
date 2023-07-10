@@ -12,10 +12,29 @@ const showPopupConfirm = ref<boolean>(false)
 </script>
 
 <template>
-  <button @click="showPopupConfirm = true">{{ profile.name }} Выйти</button>
+  <button @click="showPopupConfirm = true" class="logout-btn">
+    {{ profile.name }}
+  </button>
   <teleport to="body">
     <ThePopup v-if="showPopupConfirm" @close-popup="showPopupConfirm = false">
       <LogoutConfirm @close-popup="showPopupConfirm = false" />
     </ThePopup>
   </teleport>
 </template>
+
+<style scoped lang="sass">
+.logout-btn
+  display: flex
+  align-items: center
+  position: relative
+  padding: 10px 20px
+  @include buttonDefault
+  @include boxShadowDefault
+  &:after
+    display: block
+    content: ''
+    margin-left: 10px
+    width: 24px
+    height: 24px
+    background: url('@/assets/images/logoutArrow.svg')
+</style>

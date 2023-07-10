@@ -12,7 +12,7 @@ const showPopupConfirm = ref<boolean>(false)
 </script>
 
 <template>
-  <button @click="showPopupConfirm = true" class="logout-btn">
+  <button class="logout-btn" @click="showPopupConfirm = true">
     {{ profile.name }}
   </button>
   <teleport to="body">
@@ -28,13 +28,12 @@ const showPopupConfirm = ref<boolean>(false)
   align-items: center
   position: relative
   padding: 10px 20px
+  background-color: #fff
   @include buttonDefault
   @include boxShadowDefault
   &:after
-    display: block
-    content: ''
     margin-left: 10px
     width: 24px
     height: 24px
-    background: url('@/assets/images/logoutArrow.svg')
+    @include pseudoIcon('@/assets/images/logoutArrow.svg')
 </style>

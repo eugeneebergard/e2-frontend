@@ -3,12 +3,12 @@ import { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { TArticle, THeadline } from '@/types/articles'
 import { useSearchStore, useHeadlinesStore } from '@/store/articles'
+import TheSearch from '~/components/TheSearch.vue'
+import TheArticles from '~/components/TheArticles.vue'
 
 useHead({ title: 'E2 - Главная' })
 
 const headingTitle = 'Что творится в мире?'
-const headingText =
-  'Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.'
 
 type THeadlinesRefs = { headlines: Ref<THeadline[]> }
 type TSearchRefs = {
@@ -28,13 +28,12 @@ const { articles: searchArticles, keyWord: searchKeyWord }: TSearchRefs =
 
 <template>
   <main>
-    <section class="search">
-      <TheHeading :title="headingTitle" :text="headingText" />
-      <SearchForm />
-    </section>
-    <section class="articles">
-      <TopHeadlines v-show="!searchKeyWord" :headlines="headlines" />
-      <SearchResults v-if="searchKeyWord" :articles="searchArticles" />
-    </section>
+    <TheCover />
+    <TheSearch :title="headingTitle" />
+    <TheArticles
+      :keyword="searchKeyWord"
+      :headlines="headlines"
+      :articles="searchArticles"
+    />
   </main>
 </template>

@@ -9,11 +9,11 @@ $laptop-l: 1440px
 $main-color: #5D86EF
 $secondary-color: #252B34
 
-@mixin mainFontFamily
-  font-family: Arial, sans-serif
+@mixin headingFontFamily
+  font-family: Gilroy, Arial, sans-serif
 
-@mixin container
-  max-width: 1280px
+@mixin textFontFamily
+  font-family: Inter, Arial, sans-serif
 
 @mixin resetList
   list-style-type: none
@@ -23,12 +23,21 @@ $secondary-color: #252B34
 @mixin buttonDefault
   border: none
   border-radius: 30px
-  background: transparent
   cursor: pointer
 
 @mixin linkDefault
   color: $secondary-color
   text-decoration: none
+
+@mixin inputDefault
+  border: none
+  border-radius: 30px
+  outline: none
+
+@mixin pseudoIcon($url)
+  display: block
+  content: ''
+  background: url($url)
 
 @mixin boxShadowDefault
   box-shadow: 0 5px 10px 0 rgba(146, 146, 146, 0.25)

@@ -12,7 +12,7 @@ const inputVal = ref<string>(keyWord)
     <input
       v-model="inputVal"
       class="search-form__field"
-      placeholder="Введите тему новости"
+      placeholder="Поищем что-нибудь?"
     />
     <button
       class="search-form__submit"
@@ -22,3 +22,32 @@ const inputVal = ref<string>(keyWord)
     </button>
   </form>
 </template>
+
+<style scoped lang="sass">
+.search-form
+  display: flex
+  position: relative
+  &:after
+    position: absolute
+    left: 20px
+    top: 17px
+    width: 20px
+    height: 20px
+    @include pseudoIcon('@/assets/images/loupe.svg')
+  &__field
+    position: relative
+    height: 32px
+    width: 100%
+    padding: 10px 0 10px 50px
+    @include inputDefault
+    @include boxShadowDefault
+  &__submit
+    position: absolute
+    right: 0
+    padding: 17px 30px
+    background-color: $main-color
+    color: #fff
+    z-index: 2
+    @include buttonDefault
+    @include boxShadowDefault
+</style>

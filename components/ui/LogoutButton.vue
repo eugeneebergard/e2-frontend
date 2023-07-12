@@ -12,7 +12,11 @@ const showPopupConfirm = ref<boolean>(false)
 </script>
 
 <template>
-  <button class="logout-btn" @click="showPopupConfirm = true">
+  <button
+    class="logout-btn"
+    title="Выйти из аккаунта"
+    @click="showPopupConfirm = true"
+  >
     {{ profile.name }}
   </button>
   <teleport to="body">
@@ -34,6 +38,7 @@ const showPopupConfirm = ref<boolean>(false)
   font-family: $text-font-family
   box-shadow: $ui-shadow
   @include buttonDefault
+  @include transitionDefault
   &:after
     margin-left: 10px
     width: 24px

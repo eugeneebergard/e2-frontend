@@ -24,7 +24,7 @@ function closePopup() {
 </script>
 
 <template>
-  <button @click="showPopupSignin = true">Авторизоваться</button>
+  <button class="auth-btn" @click="showPopupSignin = true">Войти</button>
   <teleport to="body">
     <transition>
       <ThePopup v-if="showPopupSignin" @close-popup="closePopup">
@@ -41,3 +41,23 @@ function closePopup() {
     </transition>
   </teleport>
 </template>
+
+<style scoped lang="sass">
+.auth-btn
+  display: flex
+  align-items: center
+  position: relative
+  padding: 10px 20px
+  font-weight: 600
+  background-color: #fff
+  color: $secondary-color
+  font-family: $text-font-family
+  box-shadow: $ui-shadow
+  @include buttonDefault
+  @include transitionDefault
+  &:after
+    margin-left: 10px
+    width: 24px
+    height: 24px
+    @include pseudoIcon('@/assets/images/authArrow.svg')
+</style>

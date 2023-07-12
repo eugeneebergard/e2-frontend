@@ -7,7 +7,7 @@ import { useSavedArticlesStore } from '@/store/articles'
 import { useProfileStore } from '@/store/user'
 import SavedArticles from '~/components/SavedArticles.vue'
 
-useHead({ title: 'E2 - Сохраненные статьи' })
+useHead({ title: '2E - Сохраненные статьи' })
 type TProfileRefs = { profile: Ref<TProfile> }
 type TSavedArticlesRefs = {
   actualSavedArticles: Ref<TSavedArticle[]>

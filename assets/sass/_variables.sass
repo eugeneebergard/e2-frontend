@@ -21,6 +21,11 @@ $card-shadow: 0 10px 20px 0 rgba(156, 156, 156, 0.15)
   margin: 0
   list-style-type: none
 
+@mixin transitionDefault
+  transition: color .3s ease
+  &:hover
+    color: $hovered-color
+
 @mixin buttonDefault
   border: none
   border-radius: 30px
@@ -29,9 +34,7 @@ $card-shadow: 0 10px 20px 0 rgba(156, 156, 156, 0.15)
 @mixin linkDefault
   color: $secondary-color
   text-decoration: none
-  transition: color .3s ease
-  &:hover
-    color: $hovered-color
+  @include transitionDefault
 
 @mixin inputDefault
   border: none

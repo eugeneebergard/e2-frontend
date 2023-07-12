@@ -6,7 +6,7 @@ import { useSearchStore, useHeadlinesStore } from '@/store/articles'
 import TheSearch from '~/components/TheSearch.vue'
 import TheArticles from '~/components/TheArticles.vue'
 
-useHead({ title: 'E2 - Главная' })
+useHead({ title: '2E - Главная' })
 
 const headingTitle = 'Что творится в мире?'
 

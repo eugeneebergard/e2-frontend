@@ -21,6 +21,7 @@ const { getNewSavedArticleId, deleteResponse } = storeToRefs(savedArticlesStore)
 const alternateImageLink =
   'https://deti-i-mama.ru/wp-content/uploads/2020/07/gazeta_212005-132.jpg'
 const imageUrl = props.article.urlToImage || alternateImageLink
+const text = props.article.description || 'Подробнее в источнике'
 const cardId = ref<string | null>(null)
 
 async function saveArticle() {
@@ -48,7 +49,7 @@ async function deleteArticle() {
     :date="article.publishedAt"
     :link="article.url"
     :source="article.source.name"
-    :text="article.description"
+    :text="text"
     :title="article.title"
     :image="imageUrl"
     :alternate-image-link="alternateImageLink"

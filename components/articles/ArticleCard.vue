@@ -5,7 +5,7 @@ const props = defineProps<{
   text: string
   source: string
   link: string
-  image: string | null
+  image: string
   alternateImageLink: string
 }>()
 

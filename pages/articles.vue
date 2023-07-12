@@ -2,22 +2,36 @@
 import { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { TSavedArticle } from '@/types/articles'
+import { TProfile } from '@/types/user'
 import { useSavedArticlesStore } from '@/store/articles'
+import { useProfileStore } from '@/store/user'
+import SavedArticles from '~/components/SavedArticles.vue'
 
 useHead({ title: 'E2 - Сохраненные статьи' })
+type TProfileRefs = { profile: Ref<TProfile> }
+type TSavedArticlesRefs = {
+  actualSavedArticles: Ref<TSavedArticle[]>
+  countSavedArticles: Ref<number>
+}
 
-type TSavedArticlesRefs = { actualSavedArticles: Ref<TSavedArticle[]> }
+const profileStore = useProfileStore()
+const { profile }: TProfileRefs = storeToRefs(profileStore)
 
-const store = useSavedArticlesStore()
-const { getSavedArticlesData } = store
+const savedArticlesStore = useSavedArticlesStore()
+const { getSavedArticlesData } = savedArticlesStore
 
-const { actualSavedArticles }: TSavedArticlesRefs = storeToRefs(store)
+const { actualSavedArticles, countSavedArticles }: TSavedArticlesRefs =
+  storeToRefs(savedArticlesStore)
+
 await getSavedArticlesData()
 </script>
 
 <template>
   <main class="main">
-    Articles Page
-    <ArticleSavedList :articles="actualSavedArticles" />
+    <SavedArticles
+      :name="profile.name"
+      :articles-count="countSavedArticles"
+      :articles="actualSavedArticles"
+    />
   </main>
 </template>

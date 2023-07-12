@@ -27,6 +27,10 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
     return savedArticles.value.slice().reverse()
   })
 
+  const countSavedArticles = computed(() => {
+    return savedArticles.value.length
+  })
+
   async function getSavedArticlesData() {
     const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
 
@@ -77,6 +81,7 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
 
     actualSavedArticles,
     getNewSavedArticleId,
+    countSavedArticles,
 
     getSavedArticlesData,
     postSavedArticleData,

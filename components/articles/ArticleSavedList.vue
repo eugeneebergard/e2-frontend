@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <ul class="grid-articles">
+  <ul class="article-saved-list">
     <ArticleSavedListItem
       v-for="article in articles"
       :key="article.link"
@@ -15,3 +15,8 @@ defineProps<{
     />
   </ul>
 </template>
+
+<style scoped lang="sass">
+.article-saved-list
+  @include articleList
+</style>

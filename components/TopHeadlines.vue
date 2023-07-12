@@ -16,7 +16,6 @@ defineProps<{
 <style scoped lang="sass">
 .headlines
   padding: 25px 25px 40px
-  margin: 25px
   background-color: #fff
   border-radius: 15px
   .title

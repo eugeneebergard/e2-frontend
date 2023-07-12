@@ -1,5 +1,9 @@
+<script setup>
+const route = useRoute()
+</script>
+
 <template>
-  <header class="header">
+  <header class="header" :class="route.name === 'articles' && 'shadow'">
     <VContainer>
       <div class="logo-container">
         <nuxt-link to="/" title="На Главную">
@@ -27,4 +31,6 @@
     justify-content: space-between
     align-items: center
     padding: 15px 80px
+.shadow
+  box-shadow: 0 10px 20px 0 #9C9C9C26
 </style>

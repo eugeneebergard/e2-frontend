@@ -13,14 +13,18 @@ const emit = defineEmits(['saveArticle', 'deleteArticle'])
     :disabled="!isAuth"
     @click.prevent="emit('saveArticle')"
   >
-    S
+    <img
+      src="@/assets/images/notFilledBookmark.svg"
+      alt="S"
+      title="Сохранить"
+    />
   </button>
   <button
     v-show="cardId"
     class="bookmark delete"
     @click.prevent="emit('deleteArticle')"
   >
-    D
+    <img src="@/assets/images/filledBookmark.svg" alt="D" title="Удалить" />
   </button>
 </template>
 

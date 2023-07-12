@@ -39,8 +39,8 @@ const inputVal = ref<string>(keyWord)
     height: 32px
     width: 100%
     padding: 10px 0 10px 50px
+    box-shadow: $ui-shadow
     @include inputDefault
-    @include boxShadowDefault
   &__submit
     position: absolute
     right: 0
@@ -48,6 +48,6 @@ const inputVal = ref<string>(keyWord)
     background-color: $main-color
     color: #fff
     z-index: 2
+    box-shadow: $ui-shadow
     @include buttonDefault
-    @include boxShadowDefault
 </style>

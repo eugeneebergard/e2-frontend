@@ -15,3 +15,8 @@ defineProps<{
     />
   </ul>
 </template>
+
+<style scoped lang="sass">
+.article-list
+  @include articleList
+</style>

@@ -32,8 +32,8 @@ const showPopupConfirm = ref<boolean>(false)
   background-color: #fff
   color: $secondary-color
   font-family: $text-font-family
+  box-shadow: $ui-shadow
   @include buttonDefault
-  @include boxShadowDefault
   &:after
     margin-left: 10px
     width: 24px

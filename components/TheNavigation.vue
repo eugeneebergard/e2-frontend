@@ -25,6 +25,7 @@ const isAuth = useIsAuth()
 
 <style scoped lang="sass">
 .nav
+  z-index: 1
   &-list
     display: flex
     align-items: center

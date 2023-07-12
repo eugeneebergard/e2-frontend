@@ -15,4 +15,6 @@ defineProps<{
   color: $secondary-color
   font-size: 40px
   font-weight: 600
+  position: relative
+  z-index: 1
 </style>

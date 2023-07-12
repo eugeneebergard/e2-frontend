@@ -27,7 +27,7 @@ const { articles: searchArticles, keyWord: searchKeyWord }: TSearchRefs =
 </script>
 
 <template>
-  <main>
+  <main class="main">
     <TheCover />
     <TheSearch :title="headingTitle" />
     <TheArticles

@@ -17,7 +17,11 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  css: ['@/assets/sass/global.sass', '@/assets/css/normalize.css'],
+  css: [
+    '@/assets/sass/global.sass',
+    '@/assets/css/normalize.css',
+    '@/assets/css/fonts.css'
+  ],
 
   vite: {
     css: {

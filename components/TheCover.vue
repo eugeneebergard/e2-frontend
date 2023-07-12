@@ -13,5 +13,4 @@
   position: absolute
   background-attachment: fixed
   top: 0
-  z-index: -1
 </style>

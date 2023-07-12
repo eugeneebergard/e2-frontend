@@ -37,5 +37,6 @@ defineProps<{
     color: $secondary-color
     font-weight: 500
     font-family: $text-font-family
+    @include cutLines(1)
     @include linkDefault
 </style>

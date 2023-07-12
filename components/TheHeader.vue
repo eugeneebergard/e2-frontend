@@ -19,8 +19,12 @@
 <style scoped lang="sass">
 .header
   background: inherit
+  height: 105px
+  .logo-container
+    z-index: 1
   .container
     display: flex
     justify-content: space-between
+    align-items: center
     padding: 15px 80px
 </style>

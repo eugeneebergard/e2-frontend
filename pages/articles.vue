@@ -16,7 +16,7 @@ await getSavedArticlesData()
 </script>
 
 <template>
-  <main>
+  <main class="main">
     Articles Page
     <ArticleSavedList :articles="actualSavedArticles" />
   </main>

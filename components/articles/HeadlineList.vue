@@ -34,7 +34,7 @@ defineProps<{
       width: 20px
       @include pseudoIcon('@/assets/images/headlineIcon.svg')
   &__link
-    color: $secondary-color
+    color: $text-color
     font-weight: 500
     font-family: $text-font-family
     @include cutLines(1)

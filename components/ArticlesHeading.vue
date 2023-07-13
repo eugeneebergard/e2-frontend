@@ -17,7 +17,7 @@ defineProps<{
   padding: 0 0 40px
   margin: 0
   font-family: $heading-font-family
-  color: $secondary-color
+  color: $text-color
   font-size: 40px
   font-weight: 600
   .count

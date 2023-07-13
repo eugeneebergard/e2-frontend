@@ -40,7 +40,9 @@ const inputVal = ref<string>(keyWord)
     width: 100%
     padding: 10px 0 10px 50px
     box-shadow: $ui-shadow
-    @include inputDefault
+    border: none
+    border-radius: 30px
+    outline: none
   &__submit
     position: absolute
     right: 0

@@ -18,7 +18,7 @@ const { logout } = useLogoutStore()
   font-family: $heading-font-family
   font-size: 20px
   font-weight: 600
-  color: $secondary-color
+  color: $text-color
 .btn
   font-family: $text-font-family
   padding: 16px 30px

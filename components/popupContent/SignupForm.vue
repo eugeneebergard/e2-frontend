@@ -25,36 +25,65 @@ async function submit() {
 </script>
 
 <template>
-  <form class="signin-form" @submit.prevent="submit">
-    <h4>Регистрация</h4>
-    <label for="name">Имя</label>
-    <input v-model="name" name="name" placeholder="Введите имя" type="text" />
-    <label for="email">Почта</label>
-    <input
-      v-model="email"
-      name="email"
-      placeholder="Введите почту"
-      type="email"
-    />
-    <label for="password">Пароль</label>
-    <input
-      v-model="password"
-      name="password"
-      placeholder="Введите пароль"
-      type="password"
-      autocomplete="on"
-    />
-    <label for="repeatPassword">Повторите пароль</label>
-    <input
-      v-model="repeatPassword"
-      name="repeatPassword"
-      placeholder="Повторите пароль"
-      type="password"
-      autocomplete="on"
-    />
-    <button type="submit">Зарегистрироваться</button>
+  <form class="form signup-form" @submit.prevent="submit">
+    <h4 class="title">Регистрация</h4>
+    <div class="field">
+      <label class="label label-name" for="name">Имя</label>
+      <input
+        v-model="name"
+        class="input input-name"
+        name="name"
+        placeholder="Введите имя"
+        type="text"
+      />
+    </div>
+    <div class="field">
+      <label class="label label-email" for="email">E-mail</label>
+      <input
+        v-model="email"
+        class="input input-email"
+        name="email"
+        placeholder="Введите почту"
+        type="email"
+      />
+    </div>
+    <div class="field">
+      <label class="label label-password" for="password">Пароль</label>
+      <input
+        v-model="password"
+        class="input input-password"
+        name="password"
+        placeholder="Введите пароль"
+        type="password"
+        autocomplete="on"
+      />
+    </div>
+    <div class="field">
+      <label class="label label-repeat-password" for="repeat-password"
+        >Повторите пароль</label
+      >
+      <input
+        v-model="repeatPassword"
+        class="input input-repeat-password"
+        name="repeat-password"
+        placeholder="Повторите пароль"
+        type="password"
+        autocomplete="on"
+      />
+    </div>
+    <button class="submit" type="submit">Зарегистрироваться</button>
   </form>
-  <div class="switch-from">
-    <span>Или <button @click="emit('switchForm')">Войти</button></span>
+  <div class="switch-form">
+    <span
+      >Уже есть аккаунт?
+      <button class="switch-form-btn" @click="emit('switchForm')">
+        Войти
+      </button></span
+    >
   </div>
 </template>
+
+<style scoped lang="sass">
+.signup-form
+  @include authForm
+</style>

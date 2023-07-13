@@ -23,7 +23,7 @@ defineProps<{
     margin: 0 0 20px 0
     padding-bottom: 7px
     font-size: 25px
-    color: $secondary-color
+    color: $text-color
     font-family: $heading-font-family
     @include borderUnderline
 </style>

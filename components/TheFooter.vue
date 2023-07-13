@@ -34,7 +34,7 @@ const year = date.getFullYear()
 <style scoped lang="sass">
 .footer
   min-height: 120px
-  background-color: $secondary-color
+  background-color: $text-color
   .container
     display: flex
     justify-content: space-between

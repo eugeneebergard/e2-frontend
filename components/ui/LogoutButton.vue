@@ -19,11 +19,13 @@ const showPopupConfirm = ref<boolean>(false)
   >
     {{ profile.name }}
   </button>
-  <teleport to="body">
-    <ThePopup v-if="showPopupConfirm" @close-popup="showPopupConfirm = false">
-      <LogoutConfirm @close-popup="showPopupConfirm = false" />
-    </ThePopup>
-  </teleport>
+  <Teleport to="body">
+    <Transition>
+      <ThePopup v-if="showPopupConfirm" @close-popup="showPopupConfirm = false">
+        <LogoutConfirm @close-popup="showPopupConfirm = false" />
+      </ThePopup>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped lang="sass">
@@ -34,7 +36,7 @@ const showPopupConfirm = ref<boolean>(false)
   padding: 10px 20px
   font-weight: 600
   background-color: #fff
-  color: $secondary-color
+  color: $text-color
   border-radius: 30px
   font-family: $text-font-family
   box-shadow: $ui-shadow

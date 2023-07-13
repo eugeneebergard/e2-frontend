@@ -7,7 +7,7 @@ $laptop-m: 1366px
 $laptop-l: 1440px
 
 $main-color: #5D86EF
-$secondary-color: #252B34
+$text-color: #252B34
 $hovered-color: #547BDE
 
 $heading-font-family: Gilroy, Arial, sans-serif
@@ -43,14 +43,9 @@ $transition: all .3s ease
   cursor: pointer
 
 @mixin linkDefault
-  color: $secondary-color
+  color: $text-color
   text-decoration: none
   @include transitionColor($hovered-color)
-
-@mixin inputDefault
-  border: none
-  border-radius: 30px
-  outline: none
 
 @mixin borderUnderline
   border-bottom: 2px solid $main-color
@@ -66,6 +61,12 @@ $transition: all .3s ease
   overflow: hidden
   -webkit-box-orient: vertical
   -webkit-line-clamp: $count
+
+@mixin articleList
+  display: grid
+  grid-template-columns: repeat(auto-fill, 305px)
+  grid-gap: 20px
+  @include resetList
 
 @mixin cardArticleBtn
   position: absolute
@@ -83,8 +84,58 @@ $transition: all .3s ease
   box-shadow: 0 4px 8px 0 rgba(60, 60, 60, 0.26)
   z-index: 10
 
-@mixin articleList
-  display: grid
-  grid-template-columns: repeat(auto-fill, 305px)
-  grid-gap: 20px
-  @include resetList
+@mixin authForm
+  .title
+    margin: 10px 0 25px
+    font-family: $heading-font-family
+    font-size: 25px
+    font-weight: 600
+  .field
+    position: relative
+    &:not(:last-of-type)
+      margin-bottom: 30px
+  .label
+    padding: 5px
+    position: absolute
+    background-color: #fff
+    top: -12px
+    left: 15px
+    color: $main-color
+    font-family: $text-font-family
+    font-size: 12px
+  .input
+    width: 100%
+    height: 52px
+    padding: 15px 20px
+    border: 1px solid #ABABAB
+    border-radius: 30px
+    font-family: $text-font-family
+    font-size: 14px
+    color: $text-color
+    outline: none
+    box-sizing: border-box
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    &:focus-visible
+      border: 1px solid $main-color
+  .submit
+    font-family: $text-font-family
+    margin: 35px 0 25px
+    padding: 16px 30px
+    border-radius: 30px
+    color: #fff
+    background-color: $main-color
+    @include transitionOpacity
+    @include buttonDefault
+.switch-form
+  margin-bottom: 20px
+  text-align: center
+  color: $text-color
+  font-family: $text-font-family
+  font-size: 15px
+  &-btn
+    color: $main-color
+    background-color: inherit
+    @include buttonDefault
+    @include transitionOpacity
+

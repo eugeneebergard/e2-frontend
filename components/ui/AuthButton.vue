@@ -25,21 +25,21 @@ function closePopup() {
 
 <template>
   <button class="auth-btn" @click="showPopupSignin = true">Войти</button>
-  <teleport to="body">
-    <transition>
+  <Teleport to="body">
+    <Transition>
       <ThePopup v-if="showPopupSignin" @close-popup="closePopup">
         <SigninForm @switch-form="switchForm" />
       </ThePopup>
-    </transition>
-  </teleport>
-  <teleport to="body">
-    <transition>
+    </Transition>
+  </Teleport>
+  <Teleport to="body">
+    <Transition>
       <ThePopup v-if="showPopupSignup" @close-popup="closePopup">
         <SignupForm v-if="!showSuccessSignupMsg" @switch-form="switchForm" />
         <SignupMessage v-else @switch-form="switchForm" />
       </ThePopup>
-    </transition>
-  </teleport>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped lang="sass">
@@ -51,7 +51,7 @@ function closePopup() {
   font-weight: 600
   background-color: #fff
   border-radius: 30px
-  color: $secondary-color
+  color: $text-color
   font-family: $text-font-family
   box-shadow: $ui-shadow
   @include buttonDefault

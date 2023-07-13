@@ -12,7 +12,7 @@ defineProps<{
 .heading
   margin: 0 0 20px
   font-family: $heading-font-family
-  color: $secondary-color
+  color: $text-color
   font-size: 40px
   font-weight: 600
   position: relative

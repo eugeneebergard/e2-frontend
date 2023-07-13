@@ -46,8 +46,10 @@ const inputVal = ref<string>(keyWord)
     right: 0
     padding: 17px 30px
     background-color: $main-color
+    border-radius: 30px
     color: #fff
     z-index: 2
     box-shadow: $ui-shadow
     @include buttonDefault
+    @include transitionOpacity
 </style>

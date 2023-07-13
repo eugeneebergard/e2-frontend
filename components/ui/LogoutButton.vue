@@ -35,13 +35,17 @@ const showPopupConfirm = ref<boolean>(false)
   font-weight: 600
   background-color: #fff
   color: $secondary-color
+  border-radius: 30px
   font-family: $text-font-family
   box-shadow: $ui-shadow
   @include buttonDefault
-  @include transitionDefault
+  @include transitionColor($hovered-color)
   &:after
     margin-left: 10px
     width: 24px
     height: 24px
+    transition: $transition
     @include pseudoIcon('@/assets/images/logoutArrow.svg')
+  &:hover:after
+    background-image: url('@/assets/images/logoutArrowHovered.svg')
 </style>

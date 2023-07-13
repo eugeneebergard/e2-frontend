@@ -5,7 +5,7 @@ const emit = defineEmits(['closePopup'])
 <template>
   <div class="overlay" @click.self="emit('closePopup')">
     <div class="popup">
-      <button class="close" @click="emit('closePopup')">&times;</button>
+      <button class="close-btn" @click="emit('closePopup')" />
       <div class="content">
         <slot></slot>
       </div>
@@ -15,33 +15,37 @@ const emit = defineEmits(['closePopup'])
 
 <style scoped lang="sass">
 .overlay
-  z-index: 99
   position: fixed
   top: 0
-  bottom: 0
   left: 0
-  right: 0
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
   background: rgba(0, 0, 0, 0.7)
   transition: opacity 500ms
+  z-index: 99
 
 .popup
-  margin: 70px auto
-  padding: 20px
+  padding: 30px
   background: #fff
-  border-radius: 5px
+  border-radius: 15px
   width: 30%
   position: relative
-  transition: all 5s ease-in-out
 
-.close
+.close-btn
+  width: 32px
+  height: 32px
+  padding: 0
+  margin: 0
   position: absolute
-  top: 20px
-  right: 30px
-  font-size: 30px
-  font-weight: bold
-  text-decoration: none
-  color: #333
-  cursor: pointer
+  top: 10px
+  right: 10px
+  background-color: inherit
+  background-image: url('@/assets/images/cross.svg')
+  @include buttonDefault
+  @include transitionOpacity
 
 .content
   overflow: auto

@@ -50,14 +50,18 @@ function closePopup() {
   padding: 10px 20px
   font-weight: 600
   background-color: #fff
+  border-radius: 30px
   color: $secondary-color
   font-family: $text-font-family
   box-shadow: $ui-shadow
   @include buttonDefault
-  @include transitionDefault
+  @include transitionColor($hovered-color)
   &:after
     margin-left: 10px
     width: 24px
     height: 24px
+    transition: $transition
     @include pseudoIcon('@/assets/images/authArrow.svg')
+  &:hover:after
+    background-image: url('@/assets/images/authArrowHovered.svg')
 </style>

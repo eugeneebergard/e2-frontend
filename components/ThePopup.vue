@@ -31,7 +31,7 @@ const emit = defineEmits(['closePopup'])
   padding: 30px
   background: #fff
   border-radius: 15px
-  width: 400px
+  width: 320px
   position: relative
 
 .close-btn

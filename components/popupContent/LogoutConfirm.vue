@@ -22,6 +22,7 @@ const { logout } = useLogoutStore()
 .btn
   font-family: $text-font-family
   padding: 16px 30px
+  width: 50%
   border-radius: 30px
   @include buttonDefault
 .cancel

@@ -93,8 +93,8 @@ defineExpose({ showCardMessage })
     height: 200px
     width: 100%
     background-size: cover
-    border-top-left-radius: 10px
-    border-top-right-radius: 10px
+    border-top-left-radius: 15px
+    border-top-right-radius: 15px
     color: black
   .source
     position: absolute

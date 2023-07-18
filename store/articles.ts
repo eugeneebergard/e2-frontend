@@ -31,6 +31,16 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
     return savedArticles.value.length
   })
 
+  const savedArticlesKeywords = computed(() => {
+    const keywords: string[] = []
+
+    actualSavedArticles.value.forEach((article) => {
+      !keywords.includes(article.keyword) && keywords.push(article.keyword)
+    })
+
+    return keywords
+  })
+
   async function getSavedArticlesData() {
     const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
 
@@ -82,6 +92,7 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
     actualSavedArticles,
     getNewSavedArticleId,
     countSavedArticles,
+    savedArticlesKeywords,
 
     getSavedArticlesData,
     postSavedArticleData,

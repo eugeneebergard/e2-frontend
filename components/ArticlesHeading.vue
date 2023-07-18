@@ -1,14 +1,22 @@
 <script setup lang="ts">
+import { plural } from '@/utils/plural'
+
 defineProps<{
   name: string
   articlesCount: number
 }>()
+
+const forms = [
+  'сохранённая статья',
+  'сохранённых статьи',
+  'сохранённых статьей'
+]
 </script>
 
 <template>
   <h1 class="heading">
-    {{ name }}, у вас <span class="count">{{ articlesCount }}</span> сохранённых
-    статьей
+    {{ name }}, у вас <span class="count">{{ articlesCount }}</span>
+    {{ plural(articlesCount, forms) }}
   </h1>
 </template>
 

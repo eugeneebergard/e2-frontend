@@ -3,8 +3,9 @@ import { TSavedArticle } from '@/types/articles'
 
 defineProps<{
   name: string
-  articlesCount: number
   articles: TSavedArticle[]
+  articlesCount: number
+  articlesKeywords: string[]
 }>()
 </script>
 
@@ -12,6 +13,7 @@ defineProps<{
   <section class="saved-articles">
     <VContainer>
       <ArticlesHeading :name="name" :articles-count="articlesCount" />
+      <ArticlesKeyWords :keywords="articlesKeywords" />
       <ArticleSavedList :articles="articles" />
     </VContainer>
   </section>

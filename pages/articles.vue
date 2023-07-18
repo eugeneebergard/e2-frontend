@@ -12,6 +12,7 @@ type TProfileRefs = { profile: Ref<TProfile> }
 type TSavedArticlesRefs = {
   actualSavedArticles: Ref<TSavedArticle[]>
   countSavedArticles: Ref<number>
+  savedArticlesKeywords: Ref<string[]>
 }
 
 const profileStore = useProfileStore()
@@ -20,8 +21,11 @@ const { profile }: TProfileRefs = storeToRefs(profileStore)
 const savedArticlesStore = useSavedArticlesStore()
 const { getSavedArticlesData } = savedArticlesStore
 
-const { actualSavedArticles, countSavedArticles }: TSavedArticlesRefs =
-  storeToRefs(savedArticlesStore)
+const {
+  actualSavedArticles,
+  countSavedArticles,
+  savedArticlesKeywords
+}: TSavedArticlesRefs = storeToRefs(savedArticlesStore)
 
 await getSavedArticlesData()
 </script>
@@ -30,8 +34,9 @@ await getSavedArticlesData()
   <main class="main">
     <SavedArticles
       :name="profile.name"
-      :articles-count="countSavedArticles"
       :articles="actualSavedArticles"
+      :articles-count="countSavedArticles"
+      :articles-keywords="savedArticlesKeywords"
     />
   </main>
 </template>

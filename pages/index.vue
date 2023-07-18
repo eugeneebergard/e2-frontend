@@ -3,8 +3,6 @@ import { Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { TArticle, THeadline } from '@/types/articles'
 import { useSearchStore, useHeadlinesStore } from '@/store/articles'
-import TheSearch from '~/components/TheSearch.vue'
-import TheArticles from '~/components/TheArticles.vue'
 
 useHead({ title: '2E - Главная' })
 

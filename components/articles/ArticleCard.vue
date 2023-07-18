@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShareButton from '~/components/ui/ShareButton.vue'
+import { ref } from 'vue'
 
 const props = defineProps<{
   date: string
@@ -11,14 +11,39 @@ const props = defineProps<{
   alternateImageLink: string
 }>()
 
+const showMessage = ref(false)
+const textMessage = ref('')
+
 const localeDate = useLocaleDate(props.date)
+let timeOut: undefined | NodeJS.Timeout
+
+function showCardMessage(text: string) {
+  timeOut && clearTimeout(timeOut)
+
+  textMessage.value = text
+  showMessage.value = true
+
+  timeOut = setTimeout(() => {
+    showMessage.value = false
+  }, 3000)
+}
+
+function shareArticle() {
+  navigator.clipboard.writeText(props.link)
+  showCardMessage('Ссылка скопирована')
+}
+
+defineExpose({ showCardMessage })
 </script>
 
 <template>
   <li class="article-card">
     <a :href="link" target="_blank" class="link">
+      <Transition>
+        <CardMessage v-show="showMessage" :text="textMessage" />
+      </Transition>
       <slot></slot>
-      <ShareButton :link="link" />
+      <ShareButton :link="link" @share-article="shareArticle" />
       <img
         class="image"
         :src="image"
@@ -40,7 +65,7 @@ const localeDate = useLocaleDate(props.date)
 .article-card
   display: block
   width: 305px
-  height: 530px
+  height: 490px
   position: relative
   background-color: #fff
   border-radius: 15px
@@ -72,8 +97,12 @@ const localeDate = useLocaleDate(props.date)
     border-top-right-radius: 10px
     color: black
   .source
+    position: absolute
+    bottom: 15px
+    left: 15px
     font-family: $text-font-family
     color: #ABABAB
+    font-weight: 600
     font-size: 13px
   .date
     font-family: $text-font-family
@@ -82,6 +111,7 @@ const localeDate = useLocaleDate(props.date)
   .share-btn
     top: 10px
     right: 52px
+    @include cardArticleUiElem
     @include cardArticleBtn
     &:after
       width: 20px

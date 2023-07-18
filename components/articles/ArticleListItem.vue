@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue'
 import { storeToRefs } from 'pinia'
+import ArticleCard from './ArticleCard.vue'
 import { useSavedArticlesStore, useSearchStore } from '@/store/articles'
 import { TArticle } from '@/types/articles'
 
@@ -23,8 +24,16 @@ const alternateImageLink =
 const imageUrl = props.article.urlToImage || alternateImageLink
 const text = props.article.description || 'Подробнее в источнике'
 const cardId = ref<string | null>(null)
+const articleCard = ref<InstanceType<typeof ArticleCard> | null>(null)
+
+const isAuth = useIsAuth()
 
 async function saveArticle() {
+  if (!isAuth.value) {
+    articleCard.value.showCardMessage('Войдите, чтобы сохранять статьи')
+    return
+  }
+
   const payload = {
     keyword: searchKeyWord.value,
     date: props.article.publishedAt,
@@ -34,18 +43,25 @@ async function saveArticle() {
     link: props.article.url,
     image: imageUrl
   }
+
   await postSavedArticleData(payload)
+
   cardId.value = getNewSavedArticleId.value
+  cardId.value && articleCard.value.showCardMessage('Статья сохранена')
 }
 
 async function deleteArticle() {
   await deleteSavedArticleData(cardId.value!)
+
   deleteResponse.value && (cardId.value = null)
+
+  !cardId.value && articleCard.value.showCardMessage('Статья удалена')
 }
 </script>
 
 <template>
   <ArticleCard
+    ref="articleCard"
     :date="article.publishedAt"
     :link="article.url"
     :source="article.source.name"

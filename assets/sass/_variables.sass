@@ -68,19 +68,20 @@ $transition: all .3s ease
   grid-gap: 20px
   @include resetList
 
-@mixin cardArticleBtn
+@mixin cardArticleUiElem
   position: absolute
-  width: 32px
   height: 32px
   display: flex
   align-items: center
   justify-content: center
-  cursor: pointer
   border: none
   border-radius: 8px
   background: #FFF
   box-shadow: 0 4px 8px 0 rgba(60, 60, 60, 0.26)
   z-index: 10
+
+@mixin cardArticleBtn
+  cursor: pointer
   @include transitionOpacity
 
 @mixin authForm

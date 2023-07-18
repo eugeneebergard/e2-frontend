@@ -1,17 +1,16 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   link: string
 }>()
-function copyLink() {
-  navigator.clipboard.writeText(props.link)
-}
+
+const emit = defineEmits(['shareArticle'])
 </script>
 
 <template>
   <button
     class="share-btn"
-    @click.prevent="copyLink"
     title="Скопировать ссылку"
+    @click.prevent="emit('shareArticle')"
   />
 </template>
 
@@ -19,6 +18,7 @@ function copyLink() {
 .share-btn
   top: 10px
   right: 52px
+  @include cardArticleUiElem
   @include cardArticleBtn
   &:after
     width: 20px

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ShareButton from '~/components/ui/ShareButton.vue'
+
 const props = defineProps<{
   date: string
   title: string
@@ -16,6 +18,7 @@ const localeDate = useLocaleDate(props.date)
   <li class="article-card">
     <a :href="link" target="_blank" class="link">
       <slot></slot>
+      <ShareButton :link="link" />
       <img
         class="image"
         :src="image"
@@ -76,4 +79,14 @@ const localeDate = useLocaleDate(props.date)
     font-family: $text-font-family
     color: #ABABAB
     font-size: 13px
+  .share-btn
+    top: 10px
+    right: 52px
+    @include cardArticleBtn
+    &:after
+      width: 20px
+      height: 20px
+      @include pseudoIcon('@/assets/images/share.svg')
+    &:active:after
+      @include pseudoIcon('@/assets/images/shareСlicked.svg')
 </style>

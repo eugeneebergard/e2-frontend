@@ -10,5 +10,7 @@ const emit = defineEmits(['deleteArticle'])
 
 <style scoped lang="sass">
 .trash
+  right: 10px
+  top: 10px
   @include cardArticleBtn
 </style>

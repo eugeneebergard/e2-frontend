@@ -4,31 +4,33 @@ defineProps<{
 }>()
 const isAuth = useIsAuth()
 const emit = defineEmits(['saveArticle', 'deleteArticle'])
+
+function saveArticle() {
+  if (isAuth.value) {
+    emit('saveArticle')
+    return
+  }
+
+  console.log('Авторизуйтесь, чтобы сохранять статьи')
+}
 </script>
 
 <template>
-  <button
-    v-show="!cardId"
-    class="bookmark save"
-    :disabled="!isAuth"
-    @click.prevent="emit('saveArticle')"
-  >
-    <img
-      src="@/assets/images/notFilledBookmark.svg"
-      alt="S"
-      title="Сохранить"
-    />
+  <button v-show="!cardId" class="bookmark save" @click.prevent="saveArticle">
+    <img src="@/assets/images/bookmark.svg" alt="S" title="Сохранить" />
   </button>
   <button
     v-show="cardId"
     class="bookmark delete"
     @click.prevent="emit('deleteArticle')"
   >
-    <img src="@/assets/images/filledBookmark.svg" alt="D" title="Удалить" />
+    <img src="@/assets/images/bookmarkFilled.svg" alt="D" title="Удалить" />
   </button>
 </template>
 
 <style scoped lang="sass">
 .bookmark
+  right: 10px
+  top: 10px
   @include cardArticleBtn
 </style>

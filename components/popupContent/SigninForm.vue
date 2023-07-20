@@ -36,12 +36,12 @@ function submit() {
     <button class="submit" type="submit">Войти</button>
   </form>
   <div class="switch-form">
-    <span
-      >Нет аккаунта?
+    <span>
+      Нет аккаунта?
       <button class="switch-form-btn" @click="emit('switchForm')">
         Зарегистрироваться
-      </button></span
-    >
+      </button>
+    </span>
   </div>
 </template>
 

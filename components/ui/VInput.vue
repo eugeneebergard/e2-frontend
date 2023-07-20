@@ -16,9 +16,9 @@ const updateValue = (event: { target: HTMLInputElement }) => {
 
 <template>
   <div>
-    <label v-if="label" class="label" :class="`label-${name}`" :for="name">{{
-      label
-    }}</label>
+    <label v-if="label" class="label" :class="`label-${name}`" :for="name">
+      {{ label }}
+    </label>
     <input
       class="input"
       :class="`input-${name}`"

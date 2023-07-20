@@ -27,50 +27,37 @@ async function submit() {
 <template>
   <form class="form signup-form" @submit.prevent="submit">
     <h4 class="title">Регистрация</h4>
-    <div class="field">
-      <label class="label label-name" for="name">Имя</label>
-      <input
-        v-model="name"
-        class="input input-name"
-        name="name"
-        placeholder="Введите имя"
-        type="text"
-      />
-    </div>
-    <div class="field">
-      <label class="label label-email" for="email">E-mail</label>
-      <input
-        v-model="email"
-        class="input input-email"
-        name="email"
-        placeholder="Введите почту"
-        type="email"
-      />
-    </div>
-    <div class="field">
-      <label class="label label-password" for="password">Пароль</label>
-      <input
-        v-model="password"
-        class="input input-password"
-        name="password"
-        placeholder="Введите пароль"
-        type="password"
-        autocomplete="on"
-      />
-    </div>
-    <div class="field">
-      <label class="label label-repeat-password" for="repeat-password"
-        >Повторите пароль</label
-      >
-      <input
-        v-model="repeatPassword"
-        class="input input-repeat-password"
-        name="repeat-password"
-        placeholder="Повторите пароль"
-        type="password"
-        autocomplete="on"
-      />
-    </div>
+    <VInput
+      v-model="name"
+      class="field"
+      :name="'name'"
+      :placeholder="'Введите имя'"
+      :label="'Имя'"
+    />
+    <VInput
+      v-model="email"
+      class="field"
+      :name="'email'"
+      :type="'email'"
+      :placeholder="'Введите адрес электронной почты'"
+      :label="'E-mail'"
+    />
+    <VInput
+      v-model="password"
+      class="field"
+      :name="'password'"
+      :type="'password'"
+      :placeholder="'Введите пароль'"
+      :label="'Пароль'"
+    />
+    <VInput
+      v-model="repeatPassword"
+      class="field"
+      :name="'repeat-password'"
+      :type="'password'"
+      :placeholder="'Повторите пароль'"
+      :label="'Повторите пароль'"
+    />
     <button class="submit" type="submit">Зарегистрироваться</button>
   </form>
   <div class="switch-form">

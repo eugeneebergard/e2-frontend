@@ -61,12 +61,10 @@ async function submit() {
     <button class="submit" type="submit">Зарегистрироваться</button>
   </form>
   <div class="switch-form">
-    <span
-      >Уже есть аккаунт?
-      <button class="switch-form-btn" @click="emit('switchForm')">
-        Войти
-      </button></span
-    >
+    <span>
+      Уже есть аккаунт?
+      <button class="switch-form-btn" @click="emit('switchForm')">Войти</button>
+    </span>
   </div>
 </template>
 

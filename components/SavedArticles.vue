@@ -13,7 +13,7 @@ defineProps<{
   <section class="saved-articles">
     <VContainer>
       <ArticlesHeading :name="name" :articles-count="articlesCount" />
-      <ArticlesKeyWords :keywords="articlesKeywords" />
+      <ArticlesKeyWords v-if="articlesCount" :keywords="articlesKeywords" />
       <ArticleSavedList :articles="articles" />
     </VContainer>
   </section>

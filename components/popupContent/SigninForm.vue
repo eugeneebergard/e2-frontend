@@ -1,32 +1,38 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import * as yup from 'yup'
 import { useSigninStore } from '@/store/user'
+import { TSigninUser } from '@/types/user'
 
 const { signin } = useSigninStore()
+const { errors } = useMessages().value
 
-const email = ref<string>('')
-const password = ref<string>('')
+const { handleSubmit } = useForm<TSigninUser>({
+  validationSchema: yup.object({
+    email: yup.string().email(errors.email).required(errors.required),
+    password: yup
+      .string()
+      .min(8, errors.passwordMinLength)
+      .required(errors.required)
+  })
+})
 
 const emit = defineEmits(['switchForm'])
 
-function submit() {
-  signin({ email: email.value, password: password.value })
-}
+const onSubmit = handleSubmit((values) => {
+  signin(values)
+})
 </script>
 
 <template>
-  <form class="form signin-form" @submit.prevent="submit">
+  <form class="form signin-form" @submit="onSubmit">
     <h4 class="title">Вход</h4>
-    <VInput
-      v-model="email"
+    <VField
       class="field"
       :name="'email'"
-      :type="'email'"
       :placeholder="'Введите адрес электронной почты'"
       :label="'E-mail'"
     />
-    <VInput
-      v-model="password"
+    <VField
       class="field"
       :name="'password'"
       :type="'password'"

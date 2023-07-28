@@ -1,17 +1,14 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   name: string
-  modelValue: string
   label?: string
   type?: string
   placeholder: string
 }>()
 
-const emit = defineEmits(['update:modelValue'])
-
-const updateValue = (event: { target: HTMLInputElement }) => {
-  emit('update:modelValue', event.target.value)
-}
+const { value, errorMessage } = useField(() => props.name, undefined, {
+  validateOnValueUpdate: false
+})
 </script>
 
 <template>
@@ -20,15 +17,15 @@ const updateValue = (event: { target: HTMLInputElement }) => {
       {{ label }}
     </label>
     <input
+      v-model="value"
       class="input"
       :class="`input-${name}`"
-      :value="modelValue"
       :name="name"
       :placeholder="placeholder"
       :type="type ? type : 'text'"
       :autocomplete="name === 'password' ? 'on' : 'off'"
-      @input="updateValue"
     />
+    <span v-show="errorMessage" class="error">{{ errorMessage }}</span>
   </div>
 </template>
 
@@ -57,4 +54,12 @@ const updateValue = (event: { target: HTMLInputElement }) => {
   -moz-box-sizing: border-box
   &:focus-visible
     border: 1px solid $main-color
+.error
+  width: 258px
+  position: absolute
+  top: 54px
+  left: 20px
+  color: $error-color
+  font-family: $text-font-family
+  font-size: 12px
 </style>

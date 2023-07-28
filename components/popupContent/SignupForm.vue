@@ -1,59 +1,65 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import * as yup from 'yup'
 import { useSignupStore } from '@/store/user'
+import { TSignupUser } from '@/types/user'
 
 const { signup } = useSignupStore()
+const { errors } = useMessages().value
 
-const name = ref<string>('')
-const email = ref<string>('')
-const password = ref<string>('')
-const repeatPassword = ref<string>('')
+const { handleSubmit } = useForm({
+  validationSchema: yup.object({
+    name: yup.string().required(errors.required),
+    email: yup.string().email(errors.email).required(errors.required),
+    password: yup
+      .string()
+      .min(8, errors.passwordMinLength)
+      .required(errors.required),
+    repeatPassword: yup
+      .string()
+      .required(errors.required)
+      .min(8, errors.passwordMinLength)
+      .oneOf([yup.ref('password')], errors.repeatPassword)
+  })
+})
 
 const emit = defineEmits(['switchForm'])
-async function submit() {
-  if (password.value === repeatPassword.value) {
-    const payload = {
-      name: name.value,
-      email: email.value,
-      password: password.value
-    }
-    await signup(payload)
-    return
+
+const onSubmit = handleSubmit(async (values) => {
+  const payload: TSignupUser = {
+    name: values.name,
+    email: values.email,
+    password: values.password
   }
-  console.log('Пароли не совпадают')
-}
+
+  await signup(payload)
+})
 </script>
 
 <template>
-  <form class="form signup-form" @submit.prevent="submit">
+  <form class="form signup-form" @submit="onSubmit">
     <h4 class="title">Регистрация</h4>
-    <VInput
-      v-model="name"
+    <VField
       class="field"
       :name="'name'"
       :placeholder="'Введите имя'"
       :label="'Имя'"
     />
-    <VInput
-      v-model="email"
+    <VField
       class="field"
       :name="'email'"
-      :type="'email'"
       :placeholder="'Введите адрес электронной почты'"
       :label="'E-mail'"
     />
-    <VInput
-      v-model="password"
+    <VField
       class="field"
       :name="'password'"
       :type="'password'"
       :placeholder="'Введите пароль'"
       :label="'Пароль'"
     />
-    <VInput
-      v-model="repeatPassword"
+    <VField
       class="field"
-      :name="'repeat-password'"
+      :name="'repeatPassword'"
       :type="'password'"
       :placeholder="'Повторите пароль'"
       :label="'Повторите пароль'"

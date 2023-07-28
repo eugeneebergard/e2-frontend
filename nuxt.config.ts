@@ -42,7 +42,21 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@pinia/nuxt'],
+  modules: [
+    '@pinia/nuxt',
+    [
+      '@vee-validate/nuxt',
+      {
+        autoImports: true,
+        componentNames: {
+          Form: 'VeeForm',
+          Field: 'VeeField',
+          FieldArray: 'VeeFieldArray',
+          ErrorMessage: 'VeeErrorMessage'
+        }
+      }
+    ]
+  ],
 
   pinia: {
     autoImports: ['defineStore']

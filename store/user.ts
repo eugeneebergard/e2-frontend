@@ -32,7 +32,7 @@ export const useSignupStore = defineStore('signup-store', () => {
     }
 
     if (errorData.value) {
-      error.value = errorData.value
+      error.value = errorData.value.data.message
     }
 
     pending.value = false
@@ -40,7 +40,6 @@ export const useSignupStore = defineStore('signup-store', () => {
 
   function $reset() {
     response.value = null
-    pending.value = false
     error.value = null
   }
 
@@ -63,13 +62,17 @@ export const useSigninStore = defineStore('signin-store', () => {
     }
 
     if (errorData.value) {
-      error.value = errorData.value
+      error.value = errorData.value.data.message
     }
 
     pending.value = false
   }
 
-  return { pending, error, signin }
+  function $reset() {
+    error.value = null
+  }
+
+  return { pending, error, signin, $reset }
 })
 
 export const useLogoutStore = defineStore('logout-store', () => {
@@ -77,17 +80,12 @@ export const useLogoutStore = defineStore('logout-store', () => {
   async function logout() {
     pending.value = true
 
-    const { data, error } = await useApi('/logout', {
+    const { data } = await useApi('/logout', {
       method: 'POST'
     })
 
     if (data.value) {
       window.location.reload()
-      console.log(data.value)
-    }
-
-    if (error.value) {
-      console.log(error.value)
     }
 
     pending.value = false

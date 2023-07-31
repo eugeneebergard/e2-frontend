@@ -25,7 +25,7 @@ const { value, errorMessage } = useField(() => props.name, undefined, {
       :type="type ? type : 'text'"
       :autocomplete="name === 'password' ? 'on' : 'off'"
     />
-    <span v-show="errorMessage" class="error">{{ errorMessage }}</span>
+    <VError v-show="errorMessage" class="error">{{ errorMessage }}</VError>
   </div>
 </template>
 
@@ -56,10 +56,6 @@ const { value, errorMessage } = useField(() => props.name, undefined, {
     border: 1px solid $main-color
 .error
   width: 258px
-  position: absolute
   top: 54px
   left: 20px
-  color: $error-color
-  font-family: $text-font-family
-  font-size: 12px
 </style>

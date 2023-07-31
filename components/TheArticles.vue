@@ -20,5 +20,6 @@ defineProps<{
 <style scoped lang="sass">
 .articles
   background-color: #F5F5F5
-  padding: 60px 20px
+  .container
+    padding: 60px 80px
 </style>

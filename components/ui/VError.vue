@@ -1,14 +1,13 @@
-<script setup lang="ts">
-defineProps<{
-  errorMessage: string
-}>()
-</script>
-
 <template>
-  <h3 class="error-message">{{ errorMessage }}</h3>
+  <span class="error-message">
+    <slot></slot>
+  </span>
 </template>
 
 <style scoped lang="sass">
 .error-message
-  color: red
+  position: absolute
+  color: $error-color
+  font-family: $text-font-family
+  font-size: 12px
 </style>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import { useSignupStore } from '@/store/user'
+import { useSignupStore, useSigninStore } from '@/store/user'
 
 const signupStore = useSignupStore()
-const { showSuccessSignupMsg, response: signupResponse } =
-  storeToRefs(signupStore)
+const { showSuccessSignupMsg } = storeToRefs(signupStore)
+
+const signinStore = useSigninStore()
 
 const showPopupSignin = ref<boolean>(false)
 const showPopupSignup = ref<boolean>(false)
@@ -13,13 +14,15 @@ const showPopupSignup = ref<boolean>(false)
 function switchForm() {
   showPopupSignin.value = !showPopupSignin.value
   showPopupSignup.value = !showPopupSignup.value
-  signupResponse.value && signupStore.$reset()
+  signupStore.$reset()
+  signinStore.$reset()
 }
 
 function closePopup() {
   showPopupSignin.value = false
   showPopupSignup.value = false
-  signupResponse.value && signupStore.$reset()
+  signupStore.$reset()
+  signinStore.$reset()
 }
 </script>
 

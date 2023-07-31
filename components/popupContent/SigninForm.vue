@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import * as yup from 'yup'
+import { storeToRefs } from 'pinia'
 import { useSigninStore } from '@/store/user'
 import { TSigninUser } from '@/types/user'
 
-const { signin } = useSigninStore()
+const signinStore = useSigninStore()
+const { signin } = signinStore
+const { error: signinError } = storeToRefs(signinStore)
+
 const { errors } = useMessages().value
 
 const { handleSubmit } = useForm<TSigninUser>({
@@ -39,7 +43,12 @@ const onSubmit = handleSubmit((values) => {
       :placeholder="'Введите пароль'"
       :label="'Пароль'"
     />
-    <button class="submit" type="submit">Войти</button>
+    <div class="button-container">
+      <VError v-show="signinError" class="submit-error">
+        {{ signinError }}
+      </VError>
+      <button class="submit" type="submit">Войти</button>
+    </div>
   </form>
   <div class="switch-form">
     <span>

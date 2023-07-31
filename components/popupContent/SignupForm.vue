@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import * as yup from 'yup'
+import { storeToRefs } from 'pinia'
 import { useSignupStore } from '@/store/user'
 import { TSignupUser } from '@/types/user'
 
-const { signup } = useSignupStore()
+const signupStore = useSignupStore()
+const { signup } = signupStore
+const { error: signupError } = storeToRefs(signupStore)
+
 const { errors } = useMessages().value
 
 const { handleSubmit } = useForm({
@@ -64,7 +68,12 @@ const onSubmit = handleSubmit(async (values) => {
       :placeholder="'Повторите пароль'"
       :label="'Повторите пароль'"
     />
-    <button class="submit" type="submit">Зарегистрироваться</button>
+    <div class="button-container">
+      <VError v-show="signupError" class="submit-error">
+        {{ signupError }}
+      </VError>
+      <button class="submit" type="submit">Зарегистрироваться</button>
+    </div>
   </form>
   <div class="switch-form">
     <span>

@@ -73,5 +73,9 @@ export default defineNuxtConfig({
     }
   ],
 
-  pages: true
+  pages: true,
+
+  nitro: {
+    compressPublicAssets: true
+  }
 })

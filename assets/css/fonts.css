@@ -2,7 +2,8 @@
   font-family: Gilroy;
   font-style: normal;
   font-weight: 600;
-  src: url('assets/fonts/Gilroy/Gilroy-Semibold.woff2') format('woff2'),
+  src: local('Gilroy'),
+    url('assets/fonts/Gilroy/Gilroy-Semibold.woff2') format('woff2'),
     url('assets/fonts/Gilroy/Gilroy-Semibold.woff') format('woff');
   font-display: swap;
 }
@@ -11,7 +12,8 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 400;
-  src: url('assets/fonts/Inter/Inter-Regular.woff2') format('woff2'),
+  src: local('Inter'),
+    url('assets/fonts/Inter/Inter-Regular.woff2') format('woff2'),
     url('assets/fonts/Inter/Inter-Regular.woff') format('woff');
   font-display: swap;
 }
@@ -20,7 +22,8 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  src: url('assets/fonts/Inter/Inter-SemiBold.woff2') format('woff2'),
+  src: local('Inter'),
+    url('assets/fonts/Inter/Inter-SemiBold.woff2') format('woff2'),
     url('assets/fonts/Inter/Inter-SemiBold.woff') format('woff');
   font-display: swap;
 }

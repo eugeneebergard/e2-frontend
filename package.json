@@ -7,6 +7,7 @@
     "dev": "nuxt dev --port=8080",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "prod": "npm run build && npm run preview",
     "postinstall": "nuxt prepare",
     "prepere": "husky install",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",

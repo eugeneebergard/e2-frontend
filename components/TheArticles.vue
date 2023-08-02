@@ -21,5 +21,6 @@ defineProps<{
 .articles
   background-color: #F5F5F5
   .container
-    padding: 60px 80px
+    padding-top: 60px
+    padding-bottom: 60px
 </style>

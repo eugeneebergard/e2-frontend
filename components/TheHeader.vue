@@ -30,7 +30,8 @@ const route = useRoute()
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 15px 80px
+    padding-top: 15px
+    padding-bottom: 15px
 .shadow
   box-shadow: 0 10px 20px 0 #9C9C9C26
 </style>

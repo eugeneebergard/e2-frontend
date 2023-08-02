@@ -53,7 +53,8 @@ const year = date.getFullYear()
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 15px 80px
+    padding-top: 15px
+    padding-bottom: 15px
   .contact-list
     display: flex
     align-items: center

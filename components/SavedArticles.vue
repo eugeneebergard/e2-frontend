@@ -10,8 +10,8 @@ defineProps<{
 </script>
 
 <template>
-  <section class="saved-articles">
-    <VContainer>
+  <section>
+    <VContainer class="container">
       <ArticlesHeading :name="name" :articles-count="articlesCount" />
       <ArticlesKeyWords v-if="articlesCount" :keywords="articlesKeywords" />
       <ArticleSavedList :articles="articles" />
@@ -20,6 +20,7 @@ defineProps<{
 </template>
 
 <style scoped lang="sass">
-.saved-articles
-  padding: 60px 20px 80px
+.container
+  padding-top: 60px
+  padding-bottom: 130px
 </style>

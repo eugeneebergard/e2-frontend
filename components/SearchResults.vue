@@ -21,14 +21,10 @@ const { showLoader, showError, showNotFound }: TSearchRefs = storeToRefs(
 
 <template>
   <div class="results">
-    <VLoader v-if="showLoader" />
-
-    <div v-else-if="showError">
-      <h3>Ошибка</h3>
-    </div>
-
-    <div v-else-if="showNotFound">
-      <h3>Ничего не найдено</h3>
+    <div v-if="!articles.length" class="container">
+      <VLoader v-if="showLoader" />
+      <VError v-else-if="showError" class="error">Неизвестная ошибка</VError>
+      <NotFound v-else-if="showNotFound" class="not-found" />
     </div>
 
     <div v-else>
@@ -37,3 +33,11 @@ const { showLoader, showError, showNotFound }: TSearchRefs = storeToRefs(
     </div>
   </div>
 </template>
+
+<style scoped lang="sass">
+.container
+  display: flex
+  justify-content: center
+.error
+  font-size: 14px
+</style>

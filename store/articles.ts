@@ -125,15 +125,15 @@ export const useSearchStore = defineStore('search-store', () => {
   const keyWord = ref('')
 
   const showLoader = computed(() => pending.value)
-  const showError = computed(() => !showLoader && error.value)
+  const showError = computed(() => !pending.value && error.value)
   const showNotFound = computed(() => !error.value && !articles.value.length)
 
   async function getSearchData(value: string) {
     pending.value = true
     keyWord.value = value
+    articles.value = []
 
     if (!keyWord.value) {
-      articles.value = []
       return
     }
 

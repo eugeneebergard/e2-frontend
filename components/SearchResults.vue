@@ -20,7 +20,7 @@ const { showLoader, showError, showNotFound }: TSearchRefs = storeToRefs(
 </script>
 
 <template>
-  <div class="results">
+  <div id="results" class="results">
     <div v-if="!articles.length" class="container">
       <VLoader v-if="showLoader" />
       <VError v-else-if="showError" class="error">Неизвестная ошибка</VError>

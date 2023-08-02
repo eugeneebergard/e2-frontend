@@ -5,21 +5,22 @@ import { useSearchStore } from '@/store/articles'
 const { keyWord, getSearchData } = useSearchStore()
 
 const inputVal = ref<string>(keyWord)
+
+const onSubmit = async () => {
+  await getSearchData(inputVal.value)
+  const results = document.getElementById('results')
+  inputVal.value && results!.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
-  <form class="search-form">
+  <form class="search-form" @submit.prevent="onSubmit">
     <input
       v-model="inputVal"
       class="search-form__field"
       placeholder="Поищем что-нибудь?"
     />
-    <button
-      class="search-form__submit"
-      @click.prevent="getSearchData(inputVal)"
-    >
-      Искать
-    </button>
+    <button class="search-form__submit">Искать</button>
   </form>
 </template>
 

@@ -27,7 +27,8 @@ defineProps<{
     display: flex
     align-items: center
     position: relative
-    margin-bottom: 20px
+    &:not(:last-of-type)
+      margin-bottom: 20px
     &:before
       position: absolute
       height: 20px

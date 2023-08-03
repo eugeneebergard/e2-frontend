@@ -18,6 +18,8 @@ defineProps<{
   padding: 25px 25px 40px
   background-color: #fff
   border-radius: 15px
+  @media (max-width: $mob-l)
+    padding: 20px 15px
   .title
     display: inline-block
     margin: 0 0 20px 0
@@ -26,4 +28,6 @@ defineProps<{
     color: $text-color
     font-family: $heading-font-family
     @include borderUnderline
+    @media (max-width: $mob-l)
+      font-size: 18px
 </style>

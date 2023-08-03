@@ -4,19 +4,18 @@ const route = useRoute()
 const showNav = ref(false)
 
 function closeNav() {
+  document.body.classList.remove('no-scroll')
   showNav.value = false
 }
 
 function toggleNav() {
   showNav.value = !showNav.value
 
-  const body = document.body
-
-  if (showNav.value) body.classList.add('no-scroll')
-  else body.classList.remove('no-scroll')
+  if (showNav.value) document.body.classList.add('no-scroll')
+  else document.body.classList.remove('no-scroll')
 }
 
-watch(route, closeNav, { deep: true, immediate: true })
+watch(route, closeNav)
 </script>
 
 <template>
@@ -74,5 +73,5 @@ watch(route, closeNav, { deep: true, immediate: true })
   height: 100%
   background: rgba(0, 0, 0, 0.7)
   transition: opacity 500ms
-  z-index: 99
+  z-index: 20
 </style>

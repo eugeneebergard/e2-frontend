@@ -26,6 +26,8 @@ const emit = defineEmits(['closePopup'])
   background: rgba(0, 0, 0, 0.7)
   transition: opacity 500ms
   z-index: 99
+  @media (max-width: $mob-l)
+    align-items: end
 
 .popup
   padding: 30px
@@ -33,6 +35,11 @@ const emit = defineEmits(['closePopup'])
   border-radius: 15px
   width: 320px
   position: relative
+  @media (max-width: $mob-l)
+    padding: 30px 15px
+    height: 80vh
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
 
 .close-btn
   width: 32px

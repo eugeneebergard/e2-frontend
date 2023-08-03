@@ -30,7 +30,7 @@ const isAuth = useIsAuth()
     border-top: 1px solid #F1F1F1
     padding: 30px $padding-m 40px
     background-color: #fff
-    z-index: 99
+    z-index: 20
   @media (max-width: $mob-l)
     padding: 30px $padding-s 40px
   &-list

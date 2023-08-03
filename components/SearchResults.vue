@@ -40,4 +40,13 @@ const { showLoader, showError, showNotFound }: TSearchRefs = storeToRefs(
   justify-content: center
 .error
   font-size: 14px
+.articles-grid__heading
+  margin: 0 0 35px
+  padding: 0
+  font-family: $heading-font-family
+  font-size: 25px
+  @media(max-width: $mob-l)
+    margin: 0 0 20px
+    text-align: center
+    font-size: 18px
 </style>

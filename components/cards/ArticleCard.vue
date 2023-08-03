@@ -70,6 +70,8 @@ defineExpose({ showCardMessage })
   background-color: #fff
   border-radius: 15px
   box-shadow: $card-shadow
+  @media(max-width: $mob-l)
+    width: 100%
   .content
     margin: 15px
   .title
@@ -78,11 +80,15 @@ defineExpose({ showCardMessage })
     font-size: 20px
     font-weight: 600
     @include cutLines(3)
+    @media(max-width: $tablet)
+      font-size: 18px
   .text
     margin: 10px 0
     font-family: $text-font-family
     font-size: 15px
     @include cutLines(5)
+    @media(max-width: $tablet)
+      font-size: 14px
   .link
     display: block
     height: 100%

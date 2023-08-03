@@ -72,6 +72,10 @@ $transition: all .3s ease
   grid-template-columns: repeat(auto-fill, 305px)
   grid-gap: 20px
   @include resetList
+  @media (max-width: $mob-l)
+    justify-content: center
+    grid-template-columns: repeat(auto-fill, 290px)
+
 
 @mixin cardArticleUiElem
   position: absolute

@@ -61,7 +61,9 @@ if (props.keywords.length > 4) {
         flex-wrap: wrap
   .others
     padding: 0
-    margin: 0 0 10px 10px
+    margin: 0 0 0 10px
+    @media (max-width: $tablet)
+      margin: 0 0 10px 10px
   .number-others
     margin: 0
     color: $main-color

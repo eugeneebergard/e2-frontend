@@ -68,10 +68,13 @@ watch(route, closeNav)
 .shadow
   box-shadow: 0 10px 20px 0 #9C9C9C26
 .overlay
+  display: none
   position: fixed
   width: 100%
   height: 100%
   background: rgba(0, 0, 0, 0.7)
   transition: opacity 500ms
   z-index: 20
+  @media(max-width: $tablet)
+    display: block
 </style>

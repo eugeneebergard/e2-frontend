@@ -37,6 +37,7 @@ const emit = defineEmits(['closePopup'])
   position: relative
   @media (max-width: $mob-l)
     padding: 30px 15px
+    width: 100%
     height: 80vh
     border-bottom-left-radius: 0
     border-bottom-right-radius: 0

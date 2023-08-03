@@ -19,7 +19,7 @@ defineProps<{
   background-color: #fff
   border-radius: 15px
   @media (max-width: $mob-l)
-    padding: 20px 15px
+    padding: 20px 15px 25px
   .title
     display: inline-block
     margin: 0 0 20px 0

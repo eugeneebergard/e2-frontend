@@ -55,4 +55,6 @@ const onSubmit = async () => {
     box-shadow: $ui-shadow
     @include buttonDefault
     @include transitionOpacity
+    @media (max-width: $tablet)
+      display: none
 </style>

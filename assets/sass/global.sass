@@ -6,6 +6,14 @@
 .main
   min-height: calc(100vh - 120px - 105px)
   background-color: #F5F5F5
+  @media (max-width: $tablet)
+    min-height: calc(100vh - 84px - 120px)
+  @media (max-width: $mob-l)
+    min-height: calc(100vh - 72px - 120px)
+
+
+.no-scroll
+  overflow: hidden
 
 .v-enter-active, .v-leave-active
   transition: opacity .3s ease-out !important

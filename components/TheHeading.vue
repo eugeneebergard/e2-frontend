@@ -17,4 +17,9 @@ defineProps<{
   font-weight: 600
   position: relative
   z-index: 1
+  @media (max-width: $tablet)
+    font-size: 32px
+    text-align: center
+  @media (max-width: $mob-l)
+    font-size: 25px
 </style>

@@ -6,7 +6,7 @@ const year = date.getFullYear()
 <template>
   <footer class="footer">
     <VContainer>
-      <div>
+      <div class="author">
         <span class="text">&#169; Evgeniy Ebergard {{ year }}</span>
       </div>
       <ul class="contact-list">
@@ -55,6 +55,12 @@ const year = date.getFullYear()
     align-items: center
     padding-top: 15px
     padding-bottom: 15px
+    @media(max-width: $mob-l)
+      flex-direction: column
+      align-items: start
+  .author
+    @media(max-width: $mob-l)
+      margin-bottom: 15px
   .contact-list
     display: flex
     align-items: center

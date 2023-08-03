@@ -13,4 +13,8 @@
   position: absolute
   background-attachment: fixed
   top: 0
+  @media (max-width: $tablet)
+    min-height: 430px
+  @media (max-width: $mob-l)
+    min-height: 409px
 </style>

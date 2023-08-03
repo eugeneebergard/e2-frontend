@@ -27,16 +27,19 @@ defineProps<{
     display: flex
     align-items: center
     position: relative
-    line-height: 2.5
+    margin-bottom: 20px
     &:before
-      margin-right: 10px
+      position: absolute
       height: 20px
       width: 20px
       @include pseudoIcon('@/assets/images/headlineIcon.svg')
   &__link
     color: $text-color
     font-weight: 500
+    padding-left: 30px
     font-family: $text-font-family
     @include cutLines(1)
     @include linkDefault
+    @media(max-width: $tablet)
+      @include cutLines(2)
 </style>

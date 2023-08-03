@@ -50,4 +50,7 @@ const showPopupConfirm = ref<boolean>(false)
     @include pseudoIcon('@/assets/images/logoutArrow.svg')
   &:hover:after
     background-image: url('@/assets/images/logoutArrowHovered.svg')
+  @media (max-width: $tablet)
+    width: 100%
+    justify-content: center
 </style>

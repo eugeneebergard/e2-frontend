@@ -23,4 +23,7 @@ defineProps<{
 .container
   padding-top: 60px
   padding-bottom: 130px
+  @media (max-width: $tablet)
+    padding-top: 30px
+    padding-bottom: 25px
 </style>

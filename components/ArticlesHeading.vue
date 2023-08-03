@@ -28,6 +28,11 @@ const forms = [
   color: $text-color
   font-size: 40px
   font-weight: 600
+  @media (max-width: $tablet)
+    font-size: 32px
+    padding: 0 0 20px
+  @media (max-width: $mob-l)
+    font-size: 25px
   .count
     color: $main-color
 </style>

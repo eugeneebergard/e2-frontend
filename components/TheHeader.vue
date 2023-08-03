@@ -56,8 +56,7 @@ watch(route, closeNav, { deep: true, immediate: true })
     display: flex
     justify-content: space-between
     align-items: center
-    padding-top: 15px
-    padding-bottom: 15px
+    height: 100%
   .desktop-nav
     display: block
     @media(max-width: $tablet)

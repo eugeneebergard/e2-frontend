@@ -33,19 +33,16 @@ if (props.keywords.length > 4) {
 
 <style scoped lang="sass">
 .keywords
-  padding: 0 0 50px
+  margin: 0 0 35px
   display: flex
   align-items: center
   @media (max-width: $tablet)
     flex-direction: column
     align-items: start
-    padding: 0 0 30px
   .text
     margin: 0
     font-family: $text-font-family
     font-size: 16px
-    @media (max-width: $tablet)
-      margin-bottom: 15px
   .keyword
     padding: 10px 15px
     margin-left: 10px
@@ -53,17 +50,22 @@ if (props.keywords.length > 4) {
     border-radius: 30px
     color: $main-color
     @media (max-width: $tablet)
-      margin: 0 10px 10px 0
+      margin-left: 0
+      margin-right: 10px
     &-container
       display: flex
       align-items: center
+      overflow: auto
       @media (max-width: $tablet)
-        flex-wrap: wrap
+        margin-top: 10px
+        padding-bottom: 15px
+        width: 100%
   .others
     padding: 0
     margin: 0 0 0 10px
+    white-space: nowrap
     @media (max-width: $tablet)
-      margin: 0 0 10px 10px
+      margin-left: 0
   .number-others
     margin: 0
     color: $main-color

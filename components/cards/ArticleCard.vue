@@ -16,6 +16,7 @@ const textMessage = ref('')
 
 const localeDate = useLocaleDate(props.date)
 let timeOut: undefined | NodeJS.Timeout
+const formatText = toNormalFormat(props.text)
 
 function showCardMessage(text: string) {
   timeOut && clearTimeout(timeOut)
@@ -54,7 +55,7 @@ defineExpose({ showCardMessage })
       <div class="content">
         <span class="date">{{ localeDate }}</span>
         <h4 class="title">{{ title }}</h4>
-        <p v-if="text" class="text">{{ text }}</p>
+        <p v-if="text" class="text">{{ formatText }}</p>
         <span v-if="source" class="source">{{ source }}</span>
       </div>
     </a>

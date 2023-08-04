@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { plural } from '@/utils/plural'
 
 const props = defineProps<{
@@ -7,13 +7,13 @@ const props = defineProps<{
 }>()
 
 const forms = ['другому', 'другим', 'другим']
-const lastKeywords = ref(props.keywords)
-let numberOthers = 0
 
-if (props.keywords.length > 4) {
-  lastKeywords.value = props.keywords.slice(0, 4)
-  numberOthers = props.keywords.length - 4
-}
+const lastKeywords = computed(() => {
+  return props.keywords.length > 4 ? props.keywords.slice(0, 4) : props.keywords
+})
+const numberOthers = computed(() => {
+  return props.keywords.length > 4 ? props.keywords.length - 4 : 0
+})
 </script>
 
 <template>

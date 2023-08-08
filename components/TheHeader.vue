@@ -1,5 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+
+defineProps<{ errorPage?: boolean }>()
+
 const route = useRoute()
 const showNav = ref(false)
 
@@ -26,10 +29,15 @@ watch(route, closeNav)
           <img class="logo" src="@/assets/images/logo.svg" alt="logo" />
         </nuxt-link>
       </div>
-      <TheNavigation class="desktop-nav" />
-      <VBurger @click="toggleNav" />
+      <TheNavigation v-if="!errorPage" class="desktop-nav" />
+      <VBurger v-if="!errorPage" @click="toggleNav" />
     </VContainer>
-    <div v-show="showNav" class="overlay" @click.self="toggleNav">
+    <div
+      v-if="!errorPage"
+      v-show="showNav"
+      class="overlay"
+      @click.self="toggleNav"
+    >
       <TheNavigation class="mobile-nav" />
     </div>
   </header>

@@ -6,9 +6,9 @@ const year = date.getFullYear()
 <template>
   <footer class="footer">
     <VContainer>
-      <div class="author">
-        <span class="text">&#169; Evgeniy Ebergard {{ year }}</span>
-      </div>
+      <address class="author text">
+        &#169;2E {{ year }}, Powered by News API
+      </address>
       <ul class="contact-list">
         <li class="contact-list__item">
           <a

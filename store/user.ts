@@ -4,9 +4,12 @@ export const useProfileStore = defineStore('profile-store', () => {
   const profile = ref<TProfile>({ email: '', name: '' })
 
   async function getProfileData() {
-    const { data } = await useApi<{ user: TProfile }>('/users/me')
+    const { data, error } = await useApi<{ user: TProfile }>('/users/me')
 
-    data.value && (profile.value = data.value.user)
+    if (data.value) profile.value = data.value.user
+    else if (!data.value && error.value) {
+      throw createError({ statusCode: error.value.statusCode })
+    }
   }
 
   return { profile, getProfileData }

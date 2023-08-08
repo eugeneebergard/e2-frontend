@@ -42,9 +42,14 @@ export const useSavedArticlesStore = defineStore('saved-articles-store', () => {
   })
 
   async function getSavedArticlesData() {
-    const { data } = await useApi<{ articles: TSavedArticle[] }>('/articles')
+    const { data, error } = await useApi<{ articles: TSavedArticle[] }>(
+      '/articles'
+    )
 
-    data.value && (savedArticles.value = data.value.articles)
+    if (data.value) savedArticles.value = data.value.articles
+    else if (!data.value && error.value) {
+      throw createError({ statusCode: error.value.statusCode })
+    }
   }
 
   async function postSavedArticleData(payload: TSavedCard) {
@@ -107,9 +112,14 @@ export const useHeadlinesStore = defineStore('headlines-store', () => {
   const headlines = ref<THeadline[]>([])
 
   async function getHeadlinesData() {
-    const { data } = await useFetch<{ articles: THeadline[] }>(newsUrlTop())
+    const { data, error } = await useFetch<{ articles: THeadline[] }>(
+      newsUrlTop()
+    )
 
-    data.value && (headlines.value = data.value.articles)
+    if (data.value) headlines.value = data.value.articles
+    else if (!data.value && error.value) {
+      throw createError({ statusCode: error.value.statusCode })
+    }
   }
 
   return { headlines, getHeadlinesData }
@@ -133,9 +143,7 @@ export const useSearchStore = defineStore('search-store', () => {
     keyWord.value = value
     articles.value = []
 
-    if (!keyWord.value) {
-      return
-    }
+    if (!keyWord.value) return
 
     const options = {
       keyWord: keyWord.value,
